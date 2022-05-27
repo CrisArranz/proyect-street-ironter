@@ -10,6 +10,10 @@ class Game {
         this.intervalId = setInterval(() => {
             this.draw();
         }, 1000 / 8)
+
+        // setTimeout(() => {
+        //     requestAnimationFrame(this.draw);
+        // },1000 / 8)
     }
 
     stop() {
