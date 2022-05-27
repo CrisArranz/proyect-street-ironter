@@ -10,7 +10,11 @@ class Picasso {
         this.frames = 0;
     }
     
-    draw() {
+    draw(positionX = this.positionX, positionY = this.positionY, typeAnimation = this.typeAnimation, spriteFrames = this.spriteFrames) {
+        this.positionX = positionX;
+        this.positionY = positionY;
+        this.typeAnimation = typeAnimation;
+        this.spriteFrames = spriteFrames;
         this.frames = frameImages[this.selectedCharacter][this.typeAnimation].length - 1;
         this.context.drawImage(
             this.spriteFrames,
