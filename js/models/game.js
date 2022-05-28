@@ -1,7 +1,7 @@
 class Game {
     constructor(idCanvas) {
         this.context = document.getElementById(idCanvas).getContext('2d');
-        this.player1 = new Ken(this.context, (this.context.canvas.width / 2) - 254, this.context.canvas.height - 150);
+        this.player1 = new Ken(this.context, (this.context.canvas.width / 2) + START_LEFT_SIDE, this.context.canvas.height - HEIGHT_BATTLEFIELD);
         this.imageBackground = new Background();
         this.intervalId = null;
         this.fps = FPS;
