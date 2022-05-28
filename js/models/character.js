@@ -17,7 +17,7 @@ class Character {
         this.prevPositionY = positionY;
         this.velocityY = 0;
         
-        this.gravity = 1.5;
+        this.gravity = GRAVITY;
 
         this.movements = {
             leftPressed: false,
@@ -29,11 +29,11 @@ class Character {
             superKickPressed: false,
             specialPressed: false
         }
-        this.drawler = new Picasso(this.context, this.selectedCharacter, this.typeAnimation, this.typeAnimation.includes('Mirror') ? this.spriteMirror : this.spriteNoMirror, positionX, positionY);
+        this.drawler = new Picasso(this.context);
     }
 
     draw(){
-        this.drawler.draw(this.positionX, this.positionY, this.typeAnimation, this.typeAnimation.includes('Mirror') ? this.spriteMirror : this.spriteNoMirror);
+        this.drawler.drawCharacter(this.positionX, this.positionY,  this.selectedCharacter, this.typeAnimation, this.typeAnimation.includes('Mirror') ? this.spriteMirror : this.spriteNoMirror);
         this.animate();
     }
 
@@ -52,19 +52,27 @@ class Character {
             this.positionY = this.prevPositionY;
             this.velocityY = 0;
         }
+
+        if (this.positionX < 0) {
+            this.positionX = 0;
+        }
+
+        if (this.positionX + WIDTHCHARACTERS > this.context.canvas.width) {
+            this.positionX = this.context.canvas.width - WIDTHCHARACTERS;
+        }
     }
 
     move() {
         if (this.movements.leftPressed) {
             if (this.positionX > 0) {
-                this.velocityX -= 1
+                this.velocityX -= VELOCITYX
             } else {
                 this.velocityX = 0
             }
             this.typeAnimation = 'animationMirrorWaking'
         } else if (this.movements.rightPressed) {
             if (this.positionX < this.context.canvas.width - 105) {
-                this.velocityX += 1
+                this.velocityX += VELOCITYX
             } else {
                 this.velocityX = 0
             }
@@ -81,28 +89,28 @@ class Character {
 
     keyDownHandlerRight(event) {
         switch(event.keyCode){
-            case 37:
+            case KEY_RIGHTBOARD_LEFTPRESSED:
                 this.movements.leftPressed = true;
             break;
-            case 38:
+            case KEY_RIGHTBOARD_UPPRESSED:
                 this.movements.upPressed = true;
             break;
-            case 39:
+            case KEY_RIGHTBOARD_RIGHTPRESSED:
                 this.movements.rightPressed = true;
             break;
-            case 40:
+            case KEY_RIGHTBOARD_DOWNPRESSED:
                 this.movements.downPressed = true;
             break;
-            case 97:
+            case KEY_RIGHTBOARD_PUNCHPRESSED:
                 this.movements.punchPressed = true;
             break;
-            case 98:
+            case KEY_RIGHTBOARD_KICKPRESSED:
                 this.movements.kickPressed = true;
             break;
-            case 99:
+            case KEY_RIGHTBOARD_SUPERKICKPRESSED:
                 this.movements.superKickPressed = true;
             break;
-            case 96:
+            case KEY_RIGHTBOARD_SPECIALPRESSED:
                 this.movements.specialPressed = true;
             break;
         }
@@ -110,28 +118,28 @@ class Character {
     
     keyUpHandlerRight(event) {
         switch(event.keyCode){
-            case 37:
+            case KEY_RIGHTBOARD_LEFTPRESSED:
                 this.movements.leftPressed = false;
             break;
-            case 38:
+            case KEY_RIGHTBOARD_UPPRESSED:
                 this.movements.upPressed = false;
             break;
-            case 39:
+            case KEY_RIGHTBOARD_RIGHTPRESSED:
                 this.movements.rightPressed = false;
             break;
-            case 40:
+            case KEY_RIGHTBOARD_DOWNPRESSED:
                 this.movements.downPressed = false;
             break;
-            case 97:
+            case KEY_RIGHTBOARD_PUNCHPRESSED:
                 this.movements.punchPressed = false;
             break;
-            case 98:
+            case KEY_RIGHTBOARD_KICKPRESSED:
                 this.movements.kickPressed = false;
             break;
-            case 99:
+            case KEY_RIGHTBOARD_SUPERKICKPRESSED:
                 this.movements.superKickPressed = false;
             break;
-            case 96:
+            case KEY_RIGHTBOARD_SPECIALPRESSED:
                 this.movements.specialPressed = false;
             break;
         }
@@ -139,28 +147,28 @@ class Character {
 
     keyDownHandlerLeft(event) {
         switch(event.keyCode){
-            case 65:
+            case KEY_LEFTBOARD_LEFTPRESSED:
                 this.movements.leftPressed = true;
             break;
-            case 87:
+            case KEY_LEFTBOARD_UPPRESSED:
                 this.movements.upPressed = true;
             break;
-            case 68:
+            case KEY_LEFTBOARD_RIGHTPRESSED:
                 this.movements.rightPressed = true;
             break;
-            case 63:
+            case KEY_LEFTBOARD_DOWNPRESSED:
                 this.movements.downPressed = true;
             break;
-            case 71:
+            case KEY_LEFTBOARD_PUNCHPRESSED:
                 this.movements.punchPressed = true;
             break;
-            case 72:
+            case KEY_LEFTBOARD_KICKPRESSED:
                 this.movements.kickPressed = true;
             break;
-            case 74:
+            case KEY_LEFTBOARD_SUPERKICKPRESSED:
                 this.movements.superKickPressed = true;
             break;
-            case 84:
+            case KEY_LEFTBOARD_SPECIALPRESSED:
                 this.movements.specialPressed = true;
             break;
         }
@@ -168,28 +176,28 @@ class Character {
     
     keyUpHandlerLeft(event) {
         switch(event.keyCode){
-            case 65:
+            case KEY_LEFTBOARD_LEFTPRESSED:
                 this.movements.leftPressed = false;
             break;
-            case 87:
+            case KEY_LEFTBOARD_UPPRESSED:
                 this.movements.upPressed = false;
             break;
-            case 68:
+            case KEY_LEFTBOARD_RIGHTPRESSED:
                 this.movements.rightPressed = false;
             break;
-            case 63:
+            case KEY_LEFTBOARD_DOWNPRESSED:
                 this.movements.downPressed = false;
             break;
-            case 71:
+            case KEY_LEFTBOARD_PUNCHPRESSED:
                 this.movements.punchPressed = false;
             break;
-            case 72:
+            case KEY_LEFTBOARD_KICKPRESSED:
                 this.movements.kickPressed = false;
             break;
-            case 74:
+            case KEY_LEFTBOARD_SUPERKICKPRESSED:
                 this.movements.superKickPressed = false;
             break;
-            case 84:
+            case KEY_LEFTBOARD_SPECIALPRESSED:
                 this.movements.specialPressed = false;
             break;
         }

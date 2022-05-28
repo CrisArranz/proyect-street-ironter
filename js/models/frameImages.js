@@ -26,5 +26,10 @@ const frameImages = {
             {x: 276, y: 357, width: 104, height: 121},
             {x: 168, y: 357, width: 104, height: 121}
         ]
+    },
+    background : {
+        first: [
+            {x: 0, y: 0, width: 512, height: 400},
+        ]
     }
 }

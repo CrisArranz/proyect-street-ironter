@@ -1,37 +1,52 @@
 class Picasso {
-    constructor(context, selectedCharacter, typeAnimation, spriteFrames, positionX, positionY) {
+    constructor(context) {
         this.context = context;
-        this.selectedCharacter = selectedCharacter;
-        this.typeAnimation = typeAnimation;
-        this.spriteFrames = spriteFrames;
-        this.positionX = positionX;
-        this.positionY = positionY;
+        
+        this.prevTypeAnimation = '';
         this.frameCount = 0;
         this.frames = 0;
+        this.tick = 0;
     }
     
-    draw(positionX = this.positionX, positionY = this.positionY, typeAnimation = this.typeAnimation, spriteFrames = this.spriteFrames) {
-        this.positionX = positionX;
-        this.positionY = positionY;
-        this.typeAnimation = typeAnimation;
-        this.spriteFrames = spriteFrames;
-        this.frames = frameImages[this.selectedCharacter][this.typeAnimation].length - 1;
-        this.context.drawImage(
-            this.spriteFrames,
-            frameImages[this.selectedCharacter][this.typeAnimation][this.frameCount].x,
-            frameImages[this.selectedCharacter][this.typeAnimation][this.frameCount].y,
-            frameImages[this.selectedCharacter][this.typeAnimation][this.frameCount].width,
-            frameImages[this.selectedCharacter][this.typeAnimation][this.frameCount].height,
-            this.positionX,
-            this.positionY,
-            frameImages[this.selectedCharacter][this.typeAnimation][this.frameCount].width,
-            frameImages[this.selectedCharacter][this.typeAnimation][this.frameCount].height
-        );
-        if (this.frames > this.frameCount) {
-            this.frameCount++;
-        } else {
+    drawCharacter(positionX, positionY, selectedCharacter, typeAnimation, spriteFrames) {
+        if (this.prevTypeAnimation !== typeAnimation) {
+            this.prevTypeAnimation = typeAnimation;
             this.frameCount = 0;
         }
+        this.frames = frameImages[selectedCharacter][typeAnimation].length - 1;
+        this.context.drawImage(
+            spriteFrames,
+            frameImages[selectedCharacter][typeAnimation][this.frameCount].x,
+            frameImages[selectedCharacter][typeAnimation][this.frameCount].y,
+            frameImages[selectedCharacter][typeAnimation][this.frameCount].width,
+            frameImages[selectedCharacter][typeAnimation][this.frameCount].height,
+            positionX,
+            positionY,
+            frameImages[selectedCharacter][typeAnimation][this.frameCount].width,
+            frameImages[selectedCharacter][typeAnimation][this.frameCount].height
+        );
+        this.tick++;
+        if (this.tick > 2) {
+            this.tick = 0;
+            if (this.frames > this.frameCount) {
+                this.frameCount++;
+            } else {
+                this.frameCount = 0;
+            }
+        }
+    }
+
+    drawBackground(spriteFrames) {
+        this.context.drawImage(spriteFrames, 
+            frameImages['background']['first'].x, 
+            frameImages['background']['first'].y, 
+            frameImages['background']['first'].width, 
+            frameImages['background']['first'].height,
+            0,
+            0,
+            this.context.canvas.width,
+            this.context.height
+        )
     }
 
     clear() {
