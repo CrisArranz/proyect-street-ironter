@@ -26,7 +26,7 @@ class Picasso {
             frameImages[selectedCharacter][typeAnimation][this.frameCount].height
         );
         this.tick++;
-        if (this.tick > 1) {
+        if (this.tick > 4) {
             this.tick = 0;
             if (this.frames > this.frameCount) {
                 this.frameCount++;
