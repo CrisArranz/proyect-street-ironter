@@ -1,5 +1,5 @@
 class Character {
-    constructor(context, spriteNoMirror, spriteMirror, selectedCharacter, typeAnimation, positionX, positionY) {
+    constructor(context, spriteNoMirror, spriteMirror, selectedCharacter, typeAnimation, positionX, positionY, powerAttacks) {
         this.context = context;
         
         this.spriteNoMirror = new Image();
@@ -29,6 +29,8 @@ class Character {
             superKickPressed: false,
             specialPressed: false
         }
+        this.powerAttacks = powerAttacks;
+
         this.drawler = new Picasso(this.context);
     }
 
@@ -57,29 +59,29 @@ class Character {
             this.positionX = 0;
         }
 
-        if (this.positionX + WIDTHCHARACTERS > this.context.canvas.width) {
-            this.positionX = this.context.canvas.width - WIDTHCHARACTERS;
+        if (this.positionX + WIDTH_CHARACTERS > this.context.canvas.width) {
+            this.positionX = this.context.canvas.width - WIDTH_CHARACTERS;
         }
     }
 
     move() {
         if (this.movements.leftPressed) {
-            if (this.positionX > 0) {
-                this.velocityX -= VELOCITYX
+            if (this.positionX >= 0) {
+                this.velocityX -= VELOCITY_X
             } else {
                 this.velocityX = 0
             }
             this.typeAnimation = 'animationMirrorWaking'
         } else if (this.movements.rightPressed) {
-            if (this.positionX < this.context.canvas.width - 105) {
-                this.velocityX += VELOCITYX
+            if (this.positionX < this.context.canvas.width - WIDTH_CHARACTERS) {
+                this.velocityX += VELOCITY_X
             } else {
                 this.velocityX = 0
             }
             this.typeAnimation = 'animationWaking'
-        } else {
+        }else {
             this.velocityX = 0
-            if (this.context.canvas.width / 2 > this.positionX) {
+            if ((this.context.canvas.width / 2) > this.positionX + WIDTH_CHARACTERS) {
                 this.typeAnimation = 'animationStopped'
             } else {
                 this.typeAnimation = 'animationMirrorStopped'

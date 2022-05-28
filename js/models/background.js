@@ -7,6 +7,6 @@ class Background{
     }
 
     draw() {
-        this.drawler.drawBackground(this.backgroundImg);
+        //this.drawler.drawBackground(this.backgroundImg);
     }
 }
