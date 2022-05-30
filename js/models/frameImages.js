@@ -116,8 +116,8 @@ const frameImages = {
             {x: 71, y: 350, width: 60, height: 120}
         ],
         secondPeople: [
-            {x: 135, y: 349, width: 100, height: 115},
-            {x: 238, y: 349, width: 100, height: 115}
+            {x: 135, y: 349, width: 103, height: 115},
+            {x: 238, y: 349, width: 103, height: 115}
         ],
         thirdPeople: [
             {x: 342, y: 349, width: 85, height: 120},
