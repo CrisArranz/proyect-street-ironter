@@ -96,6 +96,18 @@ class Character {
             this.drawler.frameCount = 0;
             this.velocityY = -10
             this.directionCharacter('Jump')
+        } else if (this.movements.kickPressed) {
+            if (!this.drawler.prevTypeAnimation.includes('Jump')) {
+                this.directionCharacter('Kick');
+            }
+        } else if (this.movements.downPressed) {
+            if (!this.drawler.prevTypeAnimation.includes('Jump')) {
+                this.directionCharacter('Bend');
+            }
+        } else if (this.movements.specialPressed) {
+            if (!this.drawler.prevTypeAnimation.includes('Jump')) {
+                this.directionCharacter('Special');
+            }
         } else {
             if (!this.typeAnimation.includes('Jump')) {
                 this.velocityX = 0

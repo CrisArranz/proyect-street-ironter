@@ -32,7 +32,10 @@ class Picasso {
             if (this.frames > this.frameCount) {
                 this.frameCount++;
             } else {
-                if (typeAnimation.includes('Jump') && frameImages[selectedCharacter][typeAnimation].length - 1 === this.frameCount) {
+                if (
+                    typeAnimation.includes('Jump') && frameImages[selectedCharacter][typeAnimation].length - 1 === this.frameCount ||
+                    typeAnimation.includes('Special') && frameImages[selectedCharacter][typeAnimation].length - 1 === this.frameCount
+                ) {
                     this.frameCount = frameImages[selectedCharacter][typeAnimation].length - 1
                 } else {
                     this.frameCount = 0;
