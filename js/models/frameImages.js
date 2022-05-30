@@ -99,8 +99,29 @@ const frameImages = {
         
     },
     background : {
-        first: [
-            {x: 0, y: 0, width: 512, height: 400},
+        sky: {
+            xTrim: 5, yTrim: 295, widthTrim: 400, heightTrim: 65,
+            xBackground: 0, yBackground: 0, widthBackground: null, heightBackground: 220
+        },
+        plain: {
+            xTrim: 0, yTrim: 0, widthTrim: 512, heightTrim: 220,
+            xBackground: 0, yBackground: 20, widthBackground: null, heightBackground: 375
+        },
+        road: {
+            xTrim: 0, yTrim: 680, widthTrim: 512, heightTrim: 100,
+            xBackground: 0, yBackground: 352, widthBackground: null, heightBackground: 200
+        },
+        firstPeople: [
+            {x: 5, y: 350, width: 60, height: 120},
+            {x: 71, y: 350, width: 60, height: 120}
+        ],
+        secondPeople: [
+            {x: 135, y: 349, width: 100, height: 115},
+            {x: 238, y: 349, width: 100, height: 115}
+        ],
+        thirdPeople: [
+            {x: 342, y: 349, width: 85, height: 120},
+            {x: 427, y: 349, width: 85, height: 120}
         ]
     }
 }

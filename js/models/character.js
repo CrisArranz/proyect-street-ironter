@@ -1,5 +1,5 @@
 class Character {
-    constructor(context, spriteNoMirror, spriteMirror, selectedCharacter, typeAnimation, positionX, positionY, powerAttacks) {
+    constructor(context, spriteNoMirror, spriteMirror, selectedCharacter, typeAnimation, positionX, positionY, powerAttacks, soundSpecial) {
         this.context = context;
         
         this.spriteNoMirror = new Image();
@@ -30,6 +30,8 @@ class Character {
             specialPressed: false
         }
         this.powerAttacks = powerAttacks;
+        this.soundSpecial = soundSpecial;
+        this.soundSpecial.volume = 0.5;
 
         this.drawler = new Picasso(this.context);
 
@@ -67,8 +69,8 @@ class Character {
             this.positionX = this.context.canvas.width - WIDTH_CHARACTERS;
         }
 
-        if (this.positionY >= this.context.canvas.height - HEIGHT_BATTLEFIELD) {
-            this.positionY = this.context.canvas.height - HEIGHT_BATTLEFIELD
+        if (this.positionY >= this.context.canvas.height - HEIGHT_BATTLEFIELD_CHARACTER) {
+            this.positionY = this.context.canvas.height - HEIGHT_BATTLEFIELD_CHARACTER
             this.velocityY = 0;
         }
 
@@ -78,6 +80,9 @@ class Character {
     }
 
     move() {
+        const soundPunch = SOUND_PUNCH;
+        soundPunch.volume = 0.5;
+
         if (this.movements.leftPressed) {
             if (this.positionX >= 0) {
                 this.velocityX -= VELOCITY_X
@@ -107,26 +112,30 @@ class Character {
         } else if (this.movements.punchPressed) {
             if (!this.drawler.prevTypeAnimation.includes('Jump')) {
                 this.directionCharacter('Punch');
+                soundPunch.play();
             }
         } else if (this.movements.kickPressed) {
             if (!this.drawler.prevTypeAnimation.includes('Jump')) {
                 this.directionCharacter('Kick');
+                soundPunch.play();
             }
         } else if ((this.movements.superKickPressed || this.coolDownTimer.superKick !== COOLDOWN_HABILITIES.superKick) && this.coolDownTimer.superKick >= COOLDOWN_HABILITIES.superKick - CAST_HABILITY_DURATION) {
             if (!this.drawler.prevTypeAnimation.includes('Jump')) {
                 this.directionCharacter('SuperKick');
                 this.coolDownSuperKick = -0.1;
+                soundPunch.play();
             }
         } else if ((this.movements.specialPressed || this.coolDownTimer.special !== COOLDOWN_HABILITIES.special) && this.coolDownTimer.special >= COOLDOWN_HABILITIES.special - CAST_HABILITY_DURATION) {
             if (!this.drawler.prevTypeAnimation.includes('Jump')) {
                 this.directionCharacter('Special');
                 this.coolDownSpecial = -0.1;
+                this.soundSpecial.play();
             }
         } else {
             if (!this.typeAnimation.includes('Jump')) {
                 this.velocityX = 0
                 this.directionCharacter('Stopped');
-            } else if (this.positionY === this.context.canvas.height - HEIGHT_BATTLEFIELD) {
+            } else if (this.positionY === this.context.canvas.height - HEIGHT_BATTLEFIELD_CHARACTER) {
                 this.directionCharacter('Stopped');
             }
         }

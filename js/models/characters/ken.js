@@ -8,7 +8,8 @@ class Ken extends Character {
             typeAnimation, 
             positionX, 
             positionY, 
-            kenPowerAttacks
+            kenPowerAttacks,
+            new Audio('./assets/sounds/ken/hadouken.mp3')
         );        
     }
 }

@@ -26,7 +26,8 @@ const VELOCITY_X = 0.05;
 const WIDTH_CHARACTERS = 104;
 const HEIGHT_CHARACTERS = 120;
 
-const HEIGHT_BATTLEFIELD = 150;
+const HEIGHT_BATTLEFIELD_CHARACTER = 150;
+const HEIGHT_BATTLEFIELD_BACKGROUND = 100;
 
 const START_LEFT_SIDE = -260;
 const START_RIGHT_SIDE = 260;
@@ -36,3 +37,5 @@ const COOLDOWN_HABILITIES = {
     special: 20,
     superKick: 10
 };
+
+const SOUND_PUNCH = new Audio('./assets/sounds/punch.mp3');

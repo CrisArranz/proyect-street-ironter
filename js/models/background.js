@@ -7,9 +7,14 @@ class Background{
     }
 
     draw() {
-        this.backgroundImg.onload = () => {
-            console.log(123);
-            this.drawler.drawBackground(this.backgroundImg);
-        }
+        this.drawler.drawBackground(this.backgroundImg, 'sky');
+        this.drawler.drawBackground(this.backgroundImg, 'plain');
+        this.drawler.drawBackground(this.backgroundImg, 'road');
+        this.drawler.drawAnimatedBackground(55, 310, 'firstPeople', this.backgroundImg);
+        this.drawler.drawAnimatedBackground(340, 302, 'secondPeople', this.backgroundImg);
+        this.drawler.drawAnimatedBackground(420, 310, 'thirdPeople', this.backgroundImg);
+        this.drawler.drawAnimatedBackground(620, 302, 'firstPeople', this.backgroundImg);
+        this.drawler.drawAnimatedBackground(750, 310, 'thirdPeople', this.backgroundImg);
+        this.drawler.drawAnimatedBackground(910, 300, 'secondPeople', this.backgroundImg);
     }
 }
