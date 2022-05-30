@@ -62,6 +62,15 @@ class Character {
         if (this.positionX + WIDTH_CHARACTERS > this.context.canvas.width) {
             this.positionX = this.context.canvas.width - WIDTH_CHARACTERS;
         }
+
+        if (this.positionY >= this.context.canvas.height - HEIGHT_BATTLEFIELD) {
+            this.positionY = this.context.canvas.height - HEIGHT_BATTLEFIELD
+            this.velocityY = 0;
+        }
+
+        if (this.positionY < 0) {
+            this.velocityY = 0;
+        }
     }
 
     move() {
@@ -71,20 +80,28 @@ class Character {
             } else {
                 this.velocityX = 0
             }
-            this.typeAnimation = 'animationMirrorWaking'
+            if (!this.drawler.prevTypeAnimation.includes('Jump')) {
+                this.directionCharacter('Waking');
+            }
         } else if (this.movements.rightPressed) {
             if (this.positionX < this.context.canvas.width - WIDTH_CHARACTERS) {
                 this.velocityX += VELOCITY_X
             } else {
                 this.velocityX = 0
             }
-            this.typeAnimation = 'animationWaking'
-        }else {
-            this.velocityX = 0
-            if ((this.context.canvas.width / 2) > this.positionX + WIDTH_CHARACTERS) {
-                this.typeAnimation = 'animationStopped'
-            } else {
-                this.typeAnimation = 'animationMirrorStopped'
+            if (!this.drawler.prevTypeAnimation.includes('Jump')) {
+                this.directionCharacter('Waking');
+            }
+        } else if (this.movements.upPressed && this.velocityY === 0) {
+            this.drawler.frameCount = 0;
+            this.velocityY = -10
+            this.directionCharacter('Jump')
+        } else {
+            if (!this.typeAnimation.includes('Jump')) {
+                this.velocityX = 0
+                this.directionCharacter('Stopped');
+            } else if (this.positionY === this.context.canvas.height - HEIGHT_BATTLEFIELD) {
+                this.directionCharacter('Stopped');
             }
         }
     }
@@ -202,6 +219,14 @@ class Character {
             case KEY_LEFTBOARD_SPECIALPRESSED:
                 this.movements.specialPressed = false;
             break;
+        }
+    }
+
+    directionCharacter(action) {
+        if ((this.context.canvas.width / 2) > this.positionX + WIDTH_CHARACTERS) {
+            this.typeAnimation = `animation${action}`
+        } else {
+            this.typeAnimation = `animationMirror${action}`
         }
     }
 }

@@ -7,6 +7,9 @@ class Background{
     }
 
     draw() {
-        //this.drawler.drawBackground(this.backgroundImg);
+        this.backgroundImg.onload = () => {
+            console.log(123);
+            this.drawler.drawBackground(this.backgroundImg);
+        }
     }
 }

@@ -13,6 +13,7 @@ class Picasso {
             this.prevTypeAnimation = typeAnimation;
             this.frameCount = 0;
         }
+
         this.frames = frameImages[selectedCharacter][typeAnimation].length - 1;
         this.context.drawImage(
             spriteFrames,
@@ -31,13 +32,18 @@ class Picasso {
             if (this.frames > this.frameCount) {
                 this.frameCount++;
             } else {
-                this.frameCount = 0;
+                if (typeAnimation.includes('Jump') && frameImages[selectedCharacter][typeAnimation].length - 1 === this.frameCount) {
+                    this.frameCount = frameImages[selectedCharacter][typeAnimation].length - 1
+                } else {
+                    this.frameCount = 0;
+                }
             }
         }
     }
 
     drawBackground(spriteFrames) {
-        this.context.drawImage(spriteFrames, 
+        this.context.drawImage(
+            spriteFrames, 
             frameImages['background']['first'].x, 
             frameImages['background']['first'].y, 
             frameImages['background']['first'].width, 
@@ -45,7 +51,7 @@ class Picasso {
             0,
             0,
             this.context.canvas.width,
-            this.context.height
+            this.context.canvas.height
         )
     }
 
