@@ -31,7 +31,7 @@ const HEIGHT_BATTLEFIELD = 150;
 const START_LEFT_SIDE = -260;
 const START_RIGHT_SIDE = 260;
 
-const CAST_HABILITY_DURATION = 5;
+const CAST_HABILITY_DURATION = 2.5;
 const COOLDOWN_HABILITIES = {
     special: 20,
     superKick: 10

@@ -35,6 +35,13 @@ const frameImages = {
             {x: 320, y: 720, width: 104, height: 121},
             {x: 424.5, y: 720, width: 104, height: 121}
         ],
+        animationSuperKick: [
+            {x: 424.5, y: 840, width: 104, height: 120},
+            {x: 315, y: 840, width: 103, height: 120},
+            {x: 202.5, y: 840, width: 104, height: 120},
+            {x: 100, y: 840, width: 104, height: 120},
+            {x: 3, y: 840, width: 103, height: 120}
+        ],
         animationSpecial: [
             {x: 0, y: 0, width: 104, height: 120},
             {x: 108, y: 0, width: 104, height: 120},
@@ -75,6 +82,13 @@ const frameImages = {
             {x: 386, y: 715, width: 115, height: 121},
             {x: 276, y: 715, width: 104, height: 121},
             {x: 173.5, y: 715, width: 104, height: 121}
+        ],
+        animationMirrorSuperKick: [
+            {x: 173.5, y: 837, width: 104, height: 120},
+            {x: 286, y: 837, width: 104, height: 120},
+            {x: 398, y: 837, width: 115, height: 120},
+            {x: 502, y: 837, width: 104, height: 120},
+            {x: 605, y: 837, width: 104, height: 121}
         ],
         animationMirrorSpecial: [
             {x: 597, y: 0, width: 104, height: 118},

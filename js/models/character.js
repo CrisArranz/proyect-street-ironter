@@ -112,6 +112,11 @@ class Character {
             if (!this.drawler.prevTypeAnimation.includes('Jump')) {
                 this.directionCharacter('Kick');
             }
+        } else if ((this.movements.superKickPressed || this.coolDownTimer.superKick !== COOLDOWN_HABILITIES.superKick) && this.coolDownTimer.superKick >= COOLDOWN_HABILITIES.superKick - CAST_HABILITY_DURATION) {
+            if (!this.drawler.prevTypeAnimation.includes('Jump')) {
+                this.directionCharacter('SuperKick');
+                this.coolDownSuperKick = -0.1;
+            }
         } else if ((this.movements.specialPressed || this.coolDownTimer.special !== COOLDOWN_HABILITIES.special) && this.coolDownTimer.special >= COOLDOWN_HABILITIES.special - CAST_HABILITY_DURATION) {
             if (!this.drawler.prevTypeAnimation.includes('Jump')) {
                 this.directionCharacter('Special');
