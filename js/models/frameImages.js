@@ -23,10 +23,17 @@ const frameImages = {
         animationBend: [
             {x: 1, y: 1080, width: 104, height: 121}
         ],
-        animationKick: [
+        animationPunch: [
             {x: 1, y: 242, width: 104, height: 121},
             {x: 107.5, y: 242, width: 104, height: 118},
             {x: 214, y: 242, width: 104, height: 121}
+        ],
+        animationKick: [
+            {x: 3, y: 720, width: 104, height: 121},
+            {x: 108, y: 720, width: 103, height: 120},
+            {x: 211, y: 720, width: 104, height: 120},
+            {x: 320, y: 720, width: 104, height: 121},
+            {x: 424.5, y: 720, width: 104, height: 121}
         ],
         animationSpecial: [
             {x: 0, y: 0, width: 104, height: 120},
@@ -57,17 +64,25 @@ const frameImages = {
             {x: 170, y: 960, width: 104, height: 121},
             {x: 68, y: 960, width: 104, height: 121}
         ],
+        animationMirrorPunch: [
+            {x: 597, y: 237, width: 104, height: 122},
+            {x: 490.5, y: 237, width: 104, height: 120},
+            {x: 384, y: 237, width: 104, height: 122}
+        ],
+        animationMirrorKick: [
+            {x: 595, y: 715, width: 104, height: 121},
+            {x: 497, y: 715, width: 104, height: 121},
+            {x: 386, y: 715, width: 115, height: 121},
+            {x: 276, y: 715, width: 104, height: 121},
+            {x: 173.5, y: 715, width: 104, height: 121}
+        ],
         animationMirrorSpecial: [
             {x: 597, y: 0, width: 104, height: 118},
             {x: 489, y: 0, width: 104, height: 117},
             {x: 384, y: 0, width: 104, height: 117},
             {x: 276, y: 0, width: 104, height: 120}
         ],
-        animationMirrorKick: [
-            {x: 597, y: 237, width: 104, height: 122},
-            {x: 490.5, y: 237, width: 104, height: 120},
-            {x: 384, y: 237, width: 104, height: 122}
-        ]
+        
     },
     background : {
         first: [

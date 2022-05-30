@@ -32,6 +32,10 @@ class Character {
         this.powerAttacks = powerAttacks;
 
         this.drawler = new Picasso(this.context);
+
+        this.coolDownTimer = JSON.parse(JSON.stringify(COOLDOWN_HABILITIES));
+        this.coolDownSpecial = 0;
+        this.coolDownSuperKick = 0;
     }
 
     draw(){
@@ -96,17 +100,22 @@ class Character {
             this.drawler.frameCount = 0;
             this.velocityY = -10
             this.directionCharacter('Jump')
-        } else if (this.movements.kickPressed) {
-            if (!this.drawler.prevTypeAnimation.includes('Jump')) {
-                this.directionCharacter('Kick');
-            }
         } else if (this.movements.downPressed) {
             if (!this.drawler.prevTypeAnimation.includes('Jump')) {
                 this.directionCharacter('Bend');
             }
-        } else if (this.movements.specialPressed) {
+        } else if (this.movements.punchPressed) {
+            if (!this.drawler.prevTypeAnimation.includes('Jump')) {
+                this.directionCharacter('Punch');
+            }
+        } else if (this.movements.kickPressed) {
+            if (!this.drawler.prevTypeAnimation.includes('Jump')) {
+                this.directionCharacter('Kick');
+            }
+        } else if ((this.movements.specialPressed || this.coolDownTimer.special !== COOLDOWN_HABILITIES.special) && this.coolDownTimer.special >= COOLDOWN_HABILITIES.special - CAST_HABILITY_DURATION) {
             if (!this.drawler.prevTypeAnimation.includes('Jump')) {
                 this.directionCharacter('Special');
+                this.coolDownSpecial = -0.1;
             }
         } else {
             if (!this.typeAnimation.includes('Jump')) {
@@ -239,6 +248,20 @@ class Character {
             this.typeAnimation = `animation${action}`
         } else {
             this.typeAnimation = `animationMirror${action}`
+        }
+    }
+
+    coolDownHabilities() {
+        this.coolDownTimer.special += this.coolDownSpecial;
+        this.coolDownTimer.superKick += this.coolDownSuperKick;
+        if (this.coolDownTimer.special <= 0 && this.coolDownTimer.special !== COOLDOWN_HABILITIES.special) {
+            this.coolDownTimer.special = COOLDOWN_HABILITIES.special;
+            this.coolDownSpecial = 0;
+        }
+
+        if (this.coolDownTimer.superKick <= 0 && this.coolDownTimer.superKick !== COOLDOWN_HABILITIES.superKick) {
+            this.coolDownTimer.superKick = COOLDOWN_HABILITIES.superKick;
+            this.coolDownSuperKick = 0;
         }
     }
 }
