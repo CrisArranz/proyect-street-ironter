@@ -85,25 +85,25 @@ class Character {
 
         if (this.movements.leftPressed) {
             if (this.positionX >= 0) {
-                this.velocityX = -VELOCITY_X
+                this.velocityX = -VELOCITY_CHARACTER_X;
             } else {
-                this.velocityX = 0
+                this.velocityX = 0;
             }
             if (!this.drawler.prevTypeAnimation.includes('Jump')) {
                 this.directionCharacter('Waking');
             }
         } else if (this.movements.rightPressed) {
             if (this.positionX < this.context.canvas.width - WIDTH_CHARACTERS) {
-                this.velocityX = VELOCITY_X
+                this.velocityX = VELOCITY_CHARACTER_X;
             } else {
-                this.velocityX = 0
+                this.velocityX = 0;
             }
             if (!this.drawler.prevTypeAnimation.includes('Jump')) {
                 this.directionCharacter('Waking');
             }
         } else if (this.movements.upPressed && this.velocityY === 0) {
             this.drawler.frameCount = 0;
-            this.velocityY = -10
+            this.velocityY = -10;
             this.directionCharacter('Jump')
         } else if (this.movements.downPressed) {
             if (!this.drawler.prevTypeAnimation.includes('Jump')) {
@@ -133,7 +133,7 @@ class Character {
             }
         } else {
             if (!this.typeAnimation.includes('Jump')) {
-                this.velocityX = 0
+                this.velocityX = 0;
                 this.directionCharacter('Stopped');
             } else if (this.positionY === this.context.canvas.height - HEIGHT_BATTLEFIELD_CHARACTER) {
                 this.directionCharacter('Stopped');
