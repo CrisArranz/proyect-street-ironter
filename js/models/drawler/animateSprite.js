@@ -1,13 +1,8 @@
-class Picasso {
+class AnimateSprite extends Picasso {
     constructor(context) {
-        this.context = context;
-        
-        this.prevTypeAnimation = '';
-        this.frameCount = 0;
-        this.frames = 0;
-        this.tick = 0;
+        super(context);
     }
-    
+
     drawCharacter(positionX, positionY, selectedCharacter, typeAnimation, spriteFrames) {
         if (this.prevTypeAnimation !== typeAnimation) {
             this.prevTypeAnimation = typeAnimation;
@@ -68,20 +63,6 @@ class Picasso {
         }
     }
 
-    drawBackground(spriteFrames, typeBackground) {
-        this.context.drawImage(
-            spriteFrames, 
-            frameImages['background'][typeBackground].xTrim,
-            frameImages['background'][typeBackground].yTrim,
-            frameImages['background'][typeBackground].widthTrim,
-            frameImages['background'][typeBackground].heightTrim,
-            frameImages['background'][typeBackground].xBackground,
-            frameImages['background'][typeBackground].yBackground,
-            this.context.canvas.width,
-            frameImages['background'][typeBackground].heightBackground,
-        )
-    }
-
     drawAnimatedBackground(positionX, positionY, typeAnimation, spriteFrames) {
         this.frames = frameImages.background[typeAnimation].length - 1;
         this.context.drawImage(
@@ -104,9 +85,5 @@ class Picasso {
                 this.frameCount = 0;
             }
         }
-    }
-
-    clear() {
-        this.context.clearRect(0, 0, this.context.canvas.width, this.context.canvas.height);
     }
 }

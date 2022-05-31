@@ -1,4 +1,4 @@
-class Character extends Picasso {
+class Character extends AnimateSprite {
     constructor(context, spriteNoMirror, spriteMirror, selectedCharacter, typeAnimation, positionX, positionY, powerAttacks, soundSpecial) {
         super(context);
         
