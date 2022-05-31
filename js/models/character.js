@@ -1,6 +1,6 @@
-class Character {
+class Character extends Picasso {
     constructor(context, spriteNoMirror, spriteMirror, selectedCharacter, typeAnimation, positionX, positionY, powerAttacks, soundSpecial) {
-        this.context = context;
+        super(context);
         
         this.spriteNoMirror = new Image();
         this.spriteNoMirror.src = spriteNoMirror;
@@ -35,15 +35,13 @@ class Character {
         this.soundSpecial = soundSpecial;
         this.soundSpecial.volume = 0.5;
 
-        this.drawler = new Picasso(this.context);
-
         this.coolDownTimer = JSON.parse(JSON.stringify(COOLDOWN_HABILITIES));
         this.coolDownSpecial = 0;
         this.coolDownSuperKick = 0;
     }
 
     draw(){
-        this.drawler.drawCharacter(this.positionX, this.positionY,  this.selectedCharacter, this.typeAnimation, this.typeAnimation.includes('Mirror') ? this.spriteMirror : this.spriteNoMirror);
+        this.drawCharacter(this.positionX, this.positionY,  this.selectedCharacter, this.typeAnimation, this.typeAnimation.includes('Mirror') ? this.spriteMirror : this.spriteNoMirror);
         this.animate();
         this.specialEffect.forEach((effect) => {
             effect.draw();
@@ -51,7 +49,7 @@ class Character {
     }
 
     clear(){
-        this.drawler.clear();
+        super.clear();
     }
 
     animate() {
@@ -100,7 +98,7 @@ class Character {
             } else {
                 this.velocityX = 0;
             }
-            if (!this.drawler.prevTypeAnimation.includes('Jump')) {
+            if (!this.prevTypeAnimation.includes('Jump')) {
                 this.directionCharacter('Waking');
             }
         } else if (this.movements.rightPressed) {
@@ -109,42 +107,42 @@ class Character {
             } else {
                 this.velocityX = 0;
             }
-            if (!this.drawler.prevTypeAnimation.includes('Jump')) {
+            if (!this.prevTypeAnimation.includes('Jump')) {
                 this.directionCharacter('Waking');
             }
         } else if (this.movements.upPressed && this.velocityY === 0) {
-            this.drawler.frameCount = 0;
+            this.frameCount = 0;
             this.velocityY = -10;
             this.directionCharacter('Jump')
         } else if (this.movements.downPressed) {
-            if (!this.drawler.prevTypeAnimation.includes('Jump')) {
+            if (!this.prevTypeAnimation.includes('Jump')) {
                 this.directionCharacter('Bend');
             }
         } else if (this.movements.punchPressed) {
-            if (!this.drawler.prevTypeAnimation.includes('Jump')) {
+            if (!this.prevTypeAnimation.includes('Jump')) {
                 this.directionCharacter('Punch');
                 soundPunch.play();
             }
         } else if (this.movements.kickPressed) {
-            if (!this.drawler.prevTypeAnimation.includes('Jump')) {
+            if (!this.prevTypeAnimation.includes('Jump')) {
                 this.directionCharacter('Kick');
                 soundPunch.play();
             }
         } else if ((this.movements.superKickPressed || this.coolDownTimer.superKick !== COOLDOWN_HABILITIES.superKick) && this.coolDownTimer.superKick >= COOLDOWN_HABILITIES.superKick - CAST_HABILITY_DURATION) {
-            if (!this.drawler.prevTypeAnimation.includes('Jump')) {
+            if (!this.prevTypeAnimation.includes('Jump')) {
                 this.directionCharacter('SuperKick');
                 this.coolDownSuperKick = -0.1;
                 soundPunch.play();
             }
         } else if ((this.movements.specialPressed || this.coolDownTimer.special !== COOLDOWN_HABILITIES.special) && this.coolDownTimer.special >= COOLDOWN_HABILITIES.special - CAST_HABILITY_DURATION) {
-            if (!this.drawler.prevTypeAnimation.includes('Jump')) {
+            if (!this.prevTypeAnimation.includes('Jump')) {
                 this.directionCharacter('Special');
                 this.coolDownSpecial = -0.1;
                 this.soundSpecial.play();
                 if (this.specialEffect.length === 0) {
                     const effect = new Special(
                         this.context,
-                        this.typeAnimation.includes('Mirror') ? this.positionX - 85 : this.positionX + 85,
+                        this.typeAnimation.includes('Mirror') ? this.positionX - 90 : this.positionX + 90,
                         this.positionY,
                         this.typeAnimation,
                         this.selectedCharacter,

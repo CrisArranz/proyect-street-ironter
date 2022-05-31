@@ -41,4 +41,11 @@ const COOLDOWN_HABILITIES = {
     superKick: 10
 };
 
+const POWER_ATTACKS = {
+    punch : 8,
+    kick: 12,
+    superkick: 24,
+    special: 100
+}
+
 const SOUND_PUNCH = new Audio('./assets/sounds/punch.mp3');
