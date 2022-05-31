@@ -49,8 +49,8 @@ const frameImages = {
             {x: 322, y: 0, width: 104, height: 120}
         ],
         animationEffectHabilitySpecial: [
-            {x: 0, y: 480, width: 104, height: 120},
-            {x: 108, y: 480, width: 104, height: 120}
+            {x: 5, y: 480, width: 60, height: 80},
+            {x: 108, y: 480, width: 60, height: 80}
         ],
         animationMirrorStopped: [
             {x: 597, y: 116, width: 104, height: 121},

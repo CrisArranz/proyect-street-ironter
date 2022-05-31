@@ -10,7 +10,7 @@ class Character {
         this.selectedCharacter = selectedCharacter;
         
         this.typeAnimation = typeAnimation;
-        
+
         this.positionX = positionX;
         this.velocityX = 0;
         this.positionY = positionY;
@@ -18,6 +18,8 @@ class Character {
         this.velocityY = 0;
         
         this.gravity = GRAVITY;
+
+        this.specialEffect = [];
 
         this.movements = {
             leftPressed: false,
@@ -43,6 +45,9 @@ class Character {
     draw(){
         this.drawler.drawCharacter(this.positionX, this.positionY,  this.selectedCharacter, this.typeAnimation, this.typeAnimation.includes('Mirror') ? this.spriteMirror : this.spriteNoMirror);
         this.animate();
+        this.specialEffect.forEach((effect) => {
+            effect.draw();
+        });
     }
 
     clear(){
@@ -56,6 +61,12 @@ class Character {
         this.positionY += this.velocityY;
         this.positionX += this.velocityX;
 
+        this.specialEffect.forEach((effect) => {
+            effect.move();
+        });
+
+        this.specialEffect = this.specialEffect.filter((effect) => effect.clearEffect());
+        
         if (this.positionY >= this.prevPositionY) {
             this.positionY = this.prevPositionY;
             this.velocityY = 0;
@@ -130,6 +141,18 @@ class Character {
                 this.directionCharacter('Special');
                 this.coolDownSpecial = -0.1;
                 this.soundSpecial.play();
+                if (this.specialEffect.length === 0) {
+                    const effect = new Special(
+                        this.context,
+                        this.typeAnimation.includes('Mirror') ? this.positionX - 85 : this.positionX + 85,
+                        this.positionY,
+                        this.typeAnimation,
+                        this.selectedCharacter,
+                        this.typeAnimation.includes('Mirror') ? this.spriteMirror : this.spriteNoMirror
+                    );
+                
+                    this.specialEffect.push(effect);
+                }
             }
         } else {
             if (!this.typeAnimation.includes('Jump')) {

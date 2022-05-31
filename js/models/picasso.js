@@ -44,6 +44,30 @@ class Picasso {
         }
     }
 
+    drawSpecial(positionX, positionY, selectedCharacter, typeAnimation, spriteFrames){
+        this.frames = frameImages[selectedCharacter][typeAnimation].length - 1;
+        this.context.drawImage(
+            spriteFrames,
+            frameImages[selectedCharacter][typeAnimation][this.frameCount].x,
+            frameImages[selectedCharacter][typeAnimation][this.frameCount].y,
+            frameImages[selectedCharacter][typeAnimation][this.frameCount].width,
+            frameImages[selectedCharacter][typeAnimation][this.frameCount].height,
+            positionX,
+            positionY,
+            frameImages[selectedCharacter][typeAnimation][this.frameCount].width,
+            frameImages[selectedCharacter][typeAnimation][this.frameCount].height
+        );
+        this.tick++;
+        if (this.tick > 20) {
+            this.tick = 0;
+            if (this.frames > this.frameCount) {
+                this.frameCount++;
+            } else {
+                this.frameCount = 0;
+            }
+        }
+    }
+
     drawBackground(spriteFrames, typeBackground) {
         this.context.drawImage(
             spriteFrames, 
