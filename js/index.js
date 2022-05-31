@@ -10,4 +10,12 @@ window.addEventListener('DOMContentLoaded', () => {
         game.player1.keyUpHandlerRight(event);
     })
 
+    // document.addEventListener('keydown', (event) => {
+    //     game.player2.keyDownHandlerLeft(event);
+    // })
+
+    // document.addEventListener('keyup', (event) => {
+    //     game.player2.keyUpHandlerLeft(event);
+    // })
+
 });

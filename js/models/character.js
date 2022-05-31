@@ -85,7 +85,7 @@ class Character {
 
         if (this.movements.leftPressed) {
             if (this.positionX >= 0) {
-                this.velocityX -= VELOCITY_X
+                this.velocityX = -VELOCITY_X
             } else {
                 this.velocityX = 0
             }
@@ -94,7 +94,7 @@ class Character {
             }
         } else if (this.movements.rightPressed) {
             if (this.positionX < this.context.canvas.width - WIDTH_CHARACTERS) {
-                this.velocityX += VELOCITY_X
+                this.velocityX = VELOCITY_X
             } else {
                 this.velocityX = 0
             }

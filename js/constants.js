@@ -21,7 +21,7 @@ const FPS = 60;
 
 const GRAVITY = 0.3;
 
-const VELOCITY_X = 0.05;
+const VELOCITY_X = 4;
 
 const WIDTH_CHARACTERS = 104;
 const HEIGHT_CHARACTERS = 120;
