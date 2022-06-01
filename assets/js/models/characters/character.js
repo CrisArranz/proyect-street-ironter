@@ -1,13 +1,13 @@
 class Character extends AnimatedSprite {
-    constructor(context, spriteNoMirror, spriteMirror, selectedCharacter, typeAnimation, positionX, positionY, powerAttacks, soundSpecial) {
+    constructor(context, characterName, typeAnimation, positionX, positionY, powerAttacks, soundSpecial) {
         super(context);
         
         this.spriteNoMirror = new Image();
-        this.spriteNoMirror.src = spriteNoMirror;
+        this.spriteNoMirror.src = `./assets/images/characters/${characterName}.png`;
         this.spriteMirror = new Image();
-        this.spriteMirror.src = spriteMirror;
+        this.spriteMirror.src = `./assets/images/characters/${characterName}.mirror.png`;
         
-        this.selectedCharacter = selectedCharacter;
+        this.characterName = characterName;
         
         this.typeAnimation = typeAnimation;
 
@@ -41,7 +41,7 @@ class Character extends AnimatedSprite {
     }
 
     draw(){
-        this.drawCharacter(this.positionX, this.positionY,  this.selectedCharacter, this.typeAnimation, this.typeAnimation.includes('Mirror') ? this.spriteMirror : this.spriteNoMirror);
+        this.drawCharacter(this.positionX, this.positionY,  this.characterName, this.typeAnimation, this.typeAnimation.includes('Mirror') ? this.spriteMirror : this.spriteNoMirror);
         this.animate();
         this.specialEffect.forEach((effect) => {
             effect.draw();
@@ -145,7 +145,7 @@ class Character extends AnimatedSprite {
                         this.typeAnimation.includes('Mirror') ? this.positionX - 90 : this.positionX + 90,
                         this.positionY,
                         this.typeAnimation,
-                        this.selectedCharacter,
+                        this.characterName,
                         this.typeAnimation.includes('Mirror') ? this.spriteMirror : this.spriteNoMirror
                     );
                 
