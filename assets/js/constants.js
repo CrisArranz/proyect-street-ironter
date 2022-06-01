@@ -16,6 +16,11 @@ const KEY_LEFTBOARD_KICKPRESSED = 72;
 const KEY_LEFTBOARD_SUPERKICKPRESSED = 74;
 const KEY_LEFTBOARD_SPECIALPRESSED = 84;
 
+const TICK_PER_SECOND = {
+    character: 4,
+    special: 20,
+    background: 90
+}
 
 const FPS = 60;
 

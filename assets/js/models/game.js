@@ -3,8 +3,14 @@ class Game {
         this.context = document.getElementById(idCanvas).getContext('2d');
         this.player1 = new Ken(this.context, (this.context.canvas.width / 2) + START_LEFT_SIDE, this.context.canvas.height - HEIGHT_BATTLEFIELD_CHARACTER);
         // this.player2 = new Ken(this.context, (this.context.canvas.width / 2) + START_RIGHT_SIDE, this.context.canvas.height - HEIGHT_BATTLEFIELD_CHARACTER);
-        this.imageBackgroundAnimated = new AnimatedBackground(this.context);
+        this.imageBackgroundAnimated1 = new AnimatedBackground(this.context, 55, 310, 'firstPeople');
+        this.imageBackgroundAnimated2 = new AnimatedBackground(this.context, 340, 302, 'secondPeople');
+        this.imageBackgroundAnimated3 = new AnimatedBackground(this.context, 420, 310, 'thirdPeople');
+        this.imageBackgroundAnimated4 = new AnimatedBackground(this.context, 620, 302, 'firstPeople');
+        this.imageBackgroundAnimated5 = new AnimatedBackground(this.context, 750, 310, 'thirdPeople');
+        this.imageBackgroundAnimated6 = new AnimatedBackground(this.context, 910, 300, 'secondPeople');
         this.imageBackgroundStatic = new StaticBackground(this.context);
+
         this.intervalId = null;
         this.fps = FPS;
     }
@@ -23,7 +29,12 @@ class Game {
     draw() {
         this.player1.clear();
         this.imageBackgroundStatic.draw();
-        this.imageBackgroundAnimated.draw();
+        this.imageBackgroundAnimated1.draw();
+        this.imageBackgroundAnimated2.draw();
+        this.imageBackgroundAnimated3.draw();
+        this.imageBackgroundAnimated4.draw();
+        this.imageBackgroundAnimated5.draw();
+        this.imageBackgroundAnimated6.draw();
         this.player1.draw();
         // this.player2.draw();
         this.player1.coolDownHabilities();

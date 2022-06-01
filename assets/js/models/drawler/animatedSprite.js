@@ -1,88 +1,43 @@
 class AnimatedSprite extends Picasso {
-    constructor(context) {
-        super(context);
+    constructor(context, positionX, positionY, framesPicture, typeAnimation, tickPerSecond, isMirrorring) {
+        super(context, positionX, positionY, framesPicture, typeAnimation, isMirrorring);
+        this.tickPerSecond = tickPerSecond;
     }
 
-    drawCharacter(positionX, positionY, selectedCharacter, typeAnimation, spriteFrames) {
-        if (this.prevTypeAnimation !== typeAnimation) {
-            this.prevTypeAnimation = typeAnimation;
+    draw(spriteFrames) {
+        if (this.prevTypeAnimation !== this.typeAnimation) {
+            this.prevTypeAnimation = this.typeAnimation;
             this.frameCount = 0;
         }
 
-        this.frames = frameImages[selectedCharacter][typeAnimation].length - 1;
+        const mode = this.isMirrorring ? 'mirror' : 'noMirror';
+
+        this.frames = this.framesPicture[mode][this.typeAnimation].length - 1;
         this.context.drawImage(
             spriteFrames,
-            frameImages[selectedCharacter][typeAnimation][this.frameCount].x,
-            frameImages[selectedCharacter][typeAnimation][this.frameCount].y,
-            frameImages[selectedCharacter][typeAnimation][this.frameCount].width,
-            frameImages[selectedCharacter][typeAnimation][this.frameCount].height,
-            positionX,
-            positionY,
-            frameImages[selectedCharacter][typeAnimation][this.frameCount].width,
-            frameImages[selectedCharacter][typeAnimation][this.frameCount].height
+            this.framesPicture[mode][this.typeAnimation][this.frameCount].x,
+            this.framesPicture[mode][this.typeAnimation][this.frameCount].y,
+            this.framesPicture[mode][this.typeAnimation][this.frameCount].width,
+            this.framesPicture[mode][this.typeAnimation][this.frameCount].height,
+            this.positionX,
+            this.positionY,
+            this.framesPicture[mode][this.typeAnimation][this.frameCount].width,
+            this.framesPicture[mode][this.typeAnimation][this.frameCount].height
         );
         this.tick++;
-        if (this.tick > 4) {
+        if (this.tick > this.tickPerSecond) {
             this.tick = 0;
             if (this.frames > this.frameCount) {
                 this.frameCount++;
             } else {
                 if (
-                    typeAnimation.includes('Jump') && frameImages[selectedCharacter][typeAnimation].length - 1 === this.frameCount ||
-                    typeAnimation.includes('Special') && frameImages[selectedCharacter][typeAnimation].length - 1 === this.frameCount
+                    this.typeAnimation.includes('Jump') && this.framesPicture[mode][this.typeAnimation].length - 1 === this.frameCount ||
+                    this.typeAnimation.includes('Special') && this.framesPicture[mode][this.typeAnimation].length - 1 === this.frameCount
                 ) {
-                    this.frameCount = frameImages[selectedCharacter][typeAnimation].length - 1
+                    this.frameCount = this.framesPicture[mode][this.typeAnimation].length - 1
                 } else {
                     this.frameCount = 0;
                 }
-            }
-        }
-    }
-
-    drawSpecial(positionX, positionY, selectedCharacter, typeAnimation, spriteFrames){
-        this.frames = frameImages[selectedCharacter][typeAnimation].length - 1;
-        this.context.drawImage(
-            spriteFrames,
-            frameImages[selectedCharacter][typeAnimation][this.frameCount].x,
-            frameImages[selectedCharacter][typeAnimation][this.frameCount].y,
-            frameImages[selectedCharacter][typeAnimation][this.frameCount].width,
-            frameImages[selectedCharacter][typeAnimation][this.frameCount].height,
-            positionX,
-            positionY,
-            frameImages[selectedCharacter][typeAnimation][this.frameCount].width,
-            frameImages[selectedCharacter][typeAnimation][this.frameCount].height
-        );
-        this.tick++;
-        if (this.tick > 20) {
-            this.tick = 0;
-            if (this.frames > this.frameCount) {
-                this.frameCount++;
-            } else {
-                this.frameCount = 0;
-            }
-        }
-    }
-
-    drawAnimatedBackground(positionX, positionY, typeAnimation, spriteFrames) {
-        this.frames = frameImages.background[typeAnimation].length - 1;
-        this.context.drawImage(
-            spriteFrames,
-            frameImages.background[typeAnimation][this.frameCount].x,
-            frameImages.background[typeAnimation][this.frameCount].y,
-            frameImages.background[typeAnimation][this.frameCount].width,
-            frameImages.background[typeAnimation][this.frameCount].height,
-            positionX,
-            positionY,
-            frameImages.background[typeAnimation][this.frameCount].width,
-            frameImages.background[typeAnimation][this.frameCount].height
-        );
-        this.tick++;
-        if (this.tick > 150) {
-            this.tick = 0;
-            if (this.frames > this.frameCount) {
-                this.frameCount++;
-            } else {
-                this.frameCount = 0;
             }
         }
     }

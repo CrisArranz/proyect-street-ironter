@@ -1,19 +1,13 @@
 class Character extends AnimatedSprite {
-    constructor(context, characterName, typeAnimation, positionX, positionY, powerAttacks, soundSpecial) {
-        super(context);
+    constructor(context, characterName, typeAnimation, positionX, positionY, powerAttacks, soundSpecial, framesPicture, isMirrorring) {
+        super(context, positionX, positionY, framesPicture, typeAnimation, TICK_PER_SECOND.character, isMirrorring);
         
         this.spriteNoMirror = new Image();
         this.spriteNoMirror.src = `./assets/images/characters/${characterName}.png`;
         this.spriteMirror = new Image();
         this.spriteMirror.src = `./assets/images/characters/${characterName}.mirror.png`;
-        
-        this.characterName = characterName;
-        
-        this.typeAnimation = typeAnimation;
 
-        this.positionX = positionX;
         this.velocityX = 0;
-        this.positionY = positionY;
         this.prevPositionY = positionY;
         this.velocityY = 0;
         
@@ -41,7 +35,7 @@ class Character extends AnimatedSprite {
     }
 
     draw(){
-        this.drawCharacter(this.positionX, this.positionY,  this.characterName, this.typeAnimation, this.typeAnimation.includes('Mirror') ? this.spriteMirror : this.spriteNoMirror);
+        super.draw(this.isMirrorring ? this.spriteMirror : this.spriteNoMirror);
         this.animate();
         this.specialEffect.forEach((effect) => {
             effect.draw();
@@ -49,7 +43,7 @@ class Character extends AnimatedSprite {
     }
 
     clear(){
-        super.clear();
+        this.context.clearRect(0, 0, this.context.canvas.width, this.context.canvas.height);
     }
 
     animate() {
@@ -142,11 +136,12 @@ class Character extends AnimatedSprite {
                 if (this.specialEffect.length === 0) {
                     const effect = new Special(
                         this.context,
-                        this.typeAnimation.includes('Mirror') ? this.positionX - 90 : this.positionX + 90,
+                        this.isMirrorring ? this.positionX - 90 : this.positionX + 90,
                         this.positionY,
-                        this.typeAnimation,
-                        this.characterName,
-                        this.typeAnimation.includes('Mirror') ? this.spriteMirror : this.spriteNoMirror
+                        'animationEffectHabilitySpecial',
+                        this.isMirrorring ? this.spriteMirror : this.spriteNoMirror,
+                        this.framesPicture,
+                        this.isMirrorring
                     );
                 
                     this.specialEffect.push(effect);
@@ -280,10 +275,11 @@ class Character extends AnimatedSprite {
 
     directionCharacter(action) {
         if ((this.context.canvas.width / 2) > this.positionX + WIDTH_CHARACTERS) {
-            this.typeAnimation = `animation${action}`
+            this.isMirrorring = false;
         } else {
-            this.typeAnimation = `animationMirror${action}`
+            this.isMirrorring = true;
         }
+        this.typeAnimation = `animation${action}`
     }
 
     coolDownHabilities() {

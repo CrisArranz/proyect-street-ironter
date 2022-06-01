@@ -6,14 +6,14 @@ class StaticSprite extends Picasso {
     drawBackground(spriteFrames, typeBackground) {
         this.context.drawImage(
             spriteFrames, 
-            frameImages['background'][typeBackground].xTrim,
-            frameImages['background'][typeBackground].yTrim,
-            frameImages['background'][typeBackground].widthTrim,
-            frameImages['background'][typeBackground].heightTrim,
-            frameImages['background'][typeBackground].xBackground,
-            frameImages['background'][typeBackground].yBackground,
+            frameImages['background']['noMirror'][typeBackground].xTrim,
+            frameImages['background']['noMirror'][typeBackground].yTrim,
+            frameImages['background']['noMirror'][typeBackground].widthTrim,
+            frameImages['background']['noMirror'][typeBackground].heightTrim,
+            frameImages['background']['noMirror'][typeBackground].xBackground,
+            frameImages['background']['noMirror'][typeBackground].yBackground,
             this.context.canvas.width,
-            frameImages['background'][typeBackground].heightBackground,
+            frameImages['background']['noMirror'][typeBackground].heightBackground,
         )
     }
 }
