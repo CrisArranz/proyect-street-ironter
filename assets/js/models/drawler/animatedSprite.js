@@ -21,10 +21,10 @@ class AnimatedSprite extends Picasso {
                 this.frameCount++;
             } else {
                 if (
-                    this.typeAnimation.includes('Jump') && this.framesPicture[mode][this.typeAnimation].length - 1 === this.frameCount ||
-                    this.typeAnimation.includes('Special') && this.framesPicture[mode][this.typeAnimation].length - 1 === this.frameCount
+                    this.typeAnimation.includes('Jump') && this.framesPicture[mode][this.status][this.typeAnimation].length - 1 === this.frameCount ||
+                    this.typeAnimation.includes('Special') && this.framesPicture[mode][this.status][this.typeAnimation].length - 1 === this.frameCount
                 ) {
-                    this.frameCount = this.framesPicture[mode][this.typeAnimation].length - 1
+                    this.frameCount = this.framesPicture[mode][this.status][this.typeAnimation].length - 1
                 } else {
                     this.frameCount = 0;
                 }

@@ -23,17 +23,30 @@ class Picasso {
     draw(){
         const mode = this.isMirrorring ? 'mirror' : 'noMirror';
         const sprite = this.isMirrorring ? this.sprites.mirror : this.sprites.noMirror;
-
-        this.context.drawImage(
-            sprite,
-            this.framesPicture[mode][this.status][this.typeAnimation][this.frameCount].x,
-            this.framesPicture[mode][this.status][this.typeAnimation][this.frameCount].y,
-            this.framesPicture[mode][this.status][this.typeAnimation][this.frameCount].width,
-            this.framesPicture[mode][this.status][this.typeAnimation][this.frameCount].height,
-            this.positionX,
-            this.positionY,
-            this.framesPicture[mode][this.status][this.typeAnimation][this.frameCount].width,
-            this.framesPicture[mode][this.status][this.typeAnimation][this.frameCount].height
-        );
+        if (this.status === 'static') {
+            this.context.drawImage(
+                sprite, 
+                this.framesPicture[mode][this.status][this.typeAnimation].xTrim,
+                this.framesPicture[mode][this.status][this.typeAnimation].yTrim,
+                this.framesPicture[mode][this.status][this.typeAnimation].widthTrim,
+                this.framesPicture[mode][this.status][this.typeAnimation].heightTrim,
+                this.positionX,
+                this.positionY,                
+                this.context.canvas.width,
+                this.framesPicture[mode][this.status][this.typeAnimation].heightBackground,
+            )
+        } else if (this.status === 'animation') {
+            this.context.drawImage(
+                sprite,
+                this.framesPicture[mode][this.status][this.typeAnimation][this.frameCount].x,
+                this.framesPicture[mode][this.status][this.typeAnimation][this.frameCount].y,
+                this.framesPicture[mode][this.status][this.typeAnimation][this.frameCount].width,
+                this.framesPicture[mode][this.status][this.typeAnimation][this.frameCount].height,
+                this.positionX,
+                this.positionY,
+                this.framesPicture[mode][this.status][this.typeAnimation][this.frameCount].width,
+                this.framesPicture[mode][this.status][this.typeAnimation][this.frameCount].height
+            );
+        }
     }
 }
