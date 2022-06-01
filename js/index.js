@@ -1,5 +1,5 @@
 window.addEventListener('DOMContentLoaded', () => {
-    const game = new Game('canvasStreetIronter');
+    const game = new Game('canvas-street-ironter');
     game.start();
 
     document.addEventListener('keydown', (event) => {
