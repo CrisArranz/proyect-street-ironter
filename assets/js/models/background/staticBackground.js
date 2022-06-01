@@ -1,4 +1,4 @@
-class StaticBackground extends NoAnimateSprite {
+class StaticBackground extends StaticSprite {
     constructor(context) {
         super(context);
         this.backgroundImg = new Image();

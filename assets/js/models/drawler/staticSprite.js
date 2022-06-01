@@ -1,4 +1,4 @@
-class NoAnimateSprite extends Picasso {
+class StaticSprite extends Picasso {
     constructor(context){
         super(context);
     }

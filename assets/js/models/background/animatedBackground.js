@@ -1,4 +1,4 @@
-class AnimateBackground extends AnimateSprite {
+class AnimatedBackground extends AnimatedSprite {
     constructor(context) {
         super(context);
         this.backgroundImg = new Image();

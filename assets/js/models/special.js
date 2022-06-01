@@ -1,4 +1,4 @@
-class Special extends AnimateSprite {
+class Special extends AnimatedSprite {
     constructor(context, positionX, positionY, typeAnimation, selectedCharacter, spriteFrames){
         super(context);
         this.positionX = positionX;

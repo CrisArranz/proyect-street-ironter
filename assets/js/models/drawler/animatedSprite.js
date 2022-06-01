@@ -1,4 +1,4 @@
-class AnimateSprite extends Picasso {
+class AnimatedSprite extends Picasso {
     constructor(context) {
         super(context);
     }
