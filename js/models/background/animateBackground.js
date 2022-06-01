@@ -2,7 +2,7 @@ class AnimateBackground extends AnimateSprite {
     constructor(context) {
         super(context);
         this.backgroundImg = new Image();
-        this.backgroundImg.src = './assets/stage/stage-ironter.png'
+        this.backgroundImg.src = './assets/images/stage/stage-ironter.png'
     }
 
     draw() {
