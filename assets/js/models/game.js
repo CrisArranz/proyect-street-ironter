@@ -9,7 +9,9 @@ class Game {
         this.imageBackgroundAnimated4 = new AnimatedBackground(this.context, 620, 302, 'firstPeople');
         this.imageBackgroundAnimated5 = new AnimatedBackground(this.context, 750, 310, 'thirdPeople');
         this.imageBackgroundAnimated6 = new AnimatedBackground(this.context, 910, 300, 'secondPeople');
-        this.imageBackgroundStatic = new StaticBackground(this.context);
+        //this.imageBackgroundStaticSky = new StaticBackground(this.context);
+        //this.imageBackgroundStaticRoad = new StaticBackground(this.context);
+        //this.imageBackgroundStaticPlain = new StaticBackground(this.context);
 
         this.intervalId = null;
         this.fps = FPS;
@@ -28,7 +30,7 @@ class Game {
 
     draw() {
         this.player1.clear();
-        this.imageBackgroundStatic.draw();
+        //this.imageBackgroundStatic.draw();
         this.imageBackgroundAnimated1.draw();
         this.imageBackgroundAnimated2.draw();
         this.imageBackgroundAnimated3.draw();
@@ -36,7 +38,7 @@ class Game {
         this.imageBackgroundAnimated5.draw();
         this.imageBackgroundAnimated6.draw();
         this.player1.draw();
-        // this.player2.draw();
+        //this.player2.draw();
         this.player1.coolDownHabilities();
     }
 }

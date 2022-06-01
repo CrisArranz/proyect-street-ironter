@@ -1,19 +1,9 @@
 class StaticSprite extends Picasso {
-    constructor(context){
-        super(context);
+    constructor(context, positionX, positionY, framesPicture, typeAnimation, isMirrorring, status){
+        super(context, positionX, positionY, framesPicture, typeAnimation, isMirrorring, status);
     }
 
-    drawBackground(spriteFrames, typeBackground) {
-        this.context.drawImage(
-            spriteFrames, 
-            frameImages['background']['noMirror'][typeBackground].xTrim,
-            frameImages['background']['noMirror'][typeBackground].yTrim,
-            frameImages['background']['noMirror'][typeBackground].widthTrim,
-            frameImages['background']['noMirror'][typeBackground].heightTrim,
-            frameImages['background']['noMirror'][typeBackground].xBackground,
-            frameImages['background']['noMirror'][typeBackground].yBackground,
-            this.context.canvas.width,
-            frameImages['background']['noMirror'][typeBackground].heightBackground,
-        )
+    draw() {
+        super.draw();
     }
 }

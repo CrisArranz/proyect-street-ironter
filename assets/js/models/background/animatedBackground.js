@@ -7,13 +7,12 @@ class AnimatedBackground extends AnimatedSprite {
             frameImages['background'],
             typeAnimation,
             TICK_PER_SECOND.background,
-            isMirroring
+            isMirroring,
+            'animation'
         );
-        this.backgroundImg = new Image();
-        this.backgroundImg.src = './assets/images/stage/stage-ironter.png'
     }
 
     draw() {
-        super.draw(this.backgroundImg);
+        super.draw();
     }
 }

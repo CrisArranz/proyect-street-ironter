@@ -1,14 +1,13 @@
 class Special extends AnimatedSprite {
-    constructor(context, positionX, positionY, typeAnimation, spriteFrames, framesPicture, isMirrorring){
-        super(context, positionX, positionY, framesPicture, typeAnimation, TICK_PER_SECOND.special, isMirrorring);
+    constructor(context, positionX, positionY, typeAnimation, framesPicture, isMirrorring, status){
+        super(context, positionX, positionY, framesPicture, typeAnimation, TICK_PER_SECOND.special, isMirrorring, status);
         this.prevPositionX = positionX;
-        this.spriteFrames = spriteFrames;
 
         this.velocityX = this.isMirrorring ? -VELOCITY_HABILITY_SPECIAL_X : VELOCITY_HABILITY_SPECIAL_X;
     }
 
     draw() {
-        super.draw(this.spriteFrames);
+        super.draw();
     }
 
     move() {

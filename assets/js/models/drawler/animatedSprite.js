@@ -1,10 +1,10 @@
 class AnimatedSprite extends Picasso {
-    constructor(context, positionX, positionY, framesPicture, typeAnimation, tickPerSecond, isMirrorring) {
-        super(context, positionX, positionY, framesPicture, typeAnimation, isMirrorring);
+    constructor(context, positionX, positionY, framesPicture, typeAnimation, tickPerSecond, isMirrorring, status) {
+        super(context, positionX, positionY, framesPicture, typeAnimation, isMirrorring, status);
         this.tickPerSecond = tickPerSecond;
     }
 
-    draw(spriteFrames) {
+    draw() {
         if (this.prevTypeAnimation !== this.typeAnimation) {
             this.prevTypeAnimation = this.typeAnimation;
             this.frameCount = 0;
@@ -12,18 +12,8 @@ class AnimatedSprite extends Picasso {
 
         const mode = this.isMirrorring ? 'mirror' : 'noMirror';
 
-        this.frames = this.framesPicture[mode][this.typeAnimation].length - 1;
-        this.context.drawImage(
-            spriteFrames,
-            this.framesPicture[mode][this.typeAnimation][this.frameCount].x,
-            this.framesPicture[mode][this.typeAnimation][this.frameCount].y,
-            this.framesPicture[mode][this.typeAnimation][this.frameCount].width,
-            this.framesPicture[mode][this.typeAnimation][this.frameCount].height,
-            this.positionX,
-            this.positionY,
-            this.framesPicture[mode][this.typeAnimation][this.frameCount].width,
-            this.framesPicture[mode][this.typeAnimation][this.frameCount].height
-        );
+        this.frames = this.framesPicture[mode][this.status][this.typeAnimation].length - 1;
+        super.draw();
         this.tick++;
         if (this.tick > this.tickPerSecond) {
             this.tick = 0;

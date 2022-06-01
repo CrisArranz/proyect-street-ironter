@@ -1,11 +1,6 @@
 class Character extends AnimatedSprite {
-    constructor(context, characterName, typeAnimation, positionX, positionY, powerAttacks, soundSpecial, framesPicture, isMirrorring) {
-        super(context, positionX, positionY, framesPicture, typeAnimation, TICK_PER_SECOND.character, isMirrorring);
-        
-        this.spriteNoMirror = new Image();
-        this.spriteNoMirror.src = `./assets/images/characters/${characterName}.png`;
-        this.spriteMirror = new Image();
-        this.spriteMirror.src = `./assets/images/characters/${characterName}.mirror.png`;
+    constructor(context, typeAnimation, positionX, positionY, powerAttacks, soundSpecial, framesPicture, isMirrorring, status) {
+        super(context, positionX, positionY, framesPicture, typeAnimation, TICK_PER_SECOND.character, isMirrorring, status);
 
         this.velocityX = 0;
         this.prevPositionY = positionY;
@@ -35,7 +30,7 @@ class Character extends AnimatedSprite {
     }
 
     draw(){
-        super.draw(this.isMirrorring ? this.spriteMirror : this.spriteNoMirror);
+        super.draw();
         this.animate();
         this.specialEffect.forEach((effect) => {
             effect.draw();
@@ -138,10 +133,10 @@ class Character extends AnimatedSprite {
                         this.context,
                         this.isMirrorring ? this.positionX - 90 : this.positionX + 90,
                         this.positionY,
-                        'animationEffectHabilitySpecial',
-                        this.isMirrorring ? this.spriteMirror : this.spriteNoMirror,
+                        'EffectHabilitySpecial',
                         this.framesPicture,
-                        this.isMirrorring
+                        this.isMirrorring,
+                        'animation'
                     );
                 
                     this.specialEffect.push(effect);
@@ -279,7 +274,7 @@ class Character extends AnimatedSprite {
         } else {
             this.isMirrorring = true;
         }
-        this.typeAnimation = `animation${action}`
+        this.typeAnimation = action;
     }
 
     coolDownHabilities() {

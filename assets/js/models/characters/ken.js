@@ -1,15 +1,15 @@
 class Ken extends Character {
-    constructor(context, positionX, positionY, typeAnimation = 'animationWaking', isMirrorring){
+    constructor(context, positionX, positionY, typeAnimation = 'Waking', isMirrorring){
         super(
             context, 
-            'ken', 
             typeAnimation, 
             positionX, 
             positionY, 
             POWER_ATTACKS,
             new Audio('./assets/sounds/ken/hadouken.mp3'),
             frameImages['ken'],
-            isMirrorring
+            isMirrorring,
+            'animation'
         );        
     }
 }
