@@ -7,112 +7,108 @@ const frameImages = {
         noMirror: {
             animation: {
                 Stopped: [
-                    {x: 1, y: 121, width: 104, height: 120},
-                    {x: 108, y: 121, width: 104, height: 120},
-                    {x: 214, y: 121, width: 104, height: 120},
-                    {x: 318, y: 121, width: 105, height: 120}
+                    {x: 1, y: 270, width: 204, height: 281},
+                    {x: 251, y: 270, width: 204, height: 281},
+                    {x: 496.5, y: 270, width: 204, height: 281},
+                    {x: 737, y: 270, width: 204, height: 281}
                 ],
                 Waking: [
-                    {x: 1, y: 362, width: 104, height: 121},
-                    {x: 108, y: 362, width: 104, height: 121},
-                    {x: 214, y: 362, width: 104, height: 121},
-                    {x: 320, y: 362, width: 104, height: 121},
-                    {x: 425, y: 362, width: 104, height: 121}
+                    {x: 1, y: 830, width: 204, height: 281},
+                    {x: 246, y: 830, width: 204, height: 281},
+                    {x: 494.5, y: 830, width: 204, height: 281},
+                    {x: 744, y: 830, width: 204, height: 281},
+                    {x: 980, y: 830, width: 204, height: 281}
                 ],
                 Jump: [
-                    {x: 107, y: 960, width: 104, height: 121},
-                    {x: 214, y: 960, width: 104, height: 121},
-                    {x: 320, y: 960, width: 104, height: 121},
-                    {x: 425, y: 960, width: 104, height: 121},
-                    {x: 530, y: 960, width: 104, height: 121}
+                    {x: 251, y: 2300, width: 204, height: 340},
+                    {x: 498, y: 2300, width: 204, height: 340},
+                    {x: 744, y: 2300, width: 204, height: 340},
+                    {x: 990, y: 2300, width: 204, height: 340},
+                    {x: 251, y: 2300, width: 204, height: 340}
                 ],
                 Bend: [
-                    {x: 1, y: 1080, width: 104, height: 121}
+                    {x: 1, y: 2600, width: 204, height: 281}
                 ],
                 Punch: [
-                    {x: 1, y: 242, width: 104, height: 121},
-                    {x: 107.5, y: 242, width: 104, height: 118},
-                    {x: 214, y: 242, width: 104, height: 121}
+                    {x: 1, y: 552, width: 220, height: 276},
+                    {x: 249, y: 552, width: 220, height: 276},
+                    {x: 1, y: 552, width: 220, height: 276}
                 ],
                 Kick: [
-                    {x: 3, y: 720, width: 104, height: 121},
-                    {x: 108, y: 720, width: 103, height: 120},
-                    {x: 211, y: 720, width: 104, height: 120},
-                    {x: 320, y: 720, width: 104, height: 121},
-                    {x: 424.5, y: 720, width: 104, height: 121}
+                    {x: 221, y: 1700, width: 220, height: 277},
+                    {x: 460, y: 1700, width: 250, height: 277},
+                    {x: 221, y: 1700, width: 220, height: 277}
                 ],
                 SuperKick: [
-                    {x: 424.5, y: 840, width: 104, height: 120},
-                    {x: 315, y: 840, width: 103, height: 120},
-                    {x: 202.5, y: 840, width: 104, height: 120},
-                    {x: 100, y: 840, width: 104, height: 120},
-                    {x: 3, y: 840, width: 103, height: 120}
+                    {x: 980, y: 1980, width: 240, height: 277},
+                    {x: 724, y: 1980, width: 240, height: 277},
+                    {x: 440, y: 1980, width: 280, height: 277},
+                    {x: 220, y: 1980, width: 240, height: 277},
+                    {x: 1, y: 1980, width: 220, height: 277}
                 ],
                 Special: [
-                    {x: 0, y: 0, width: 104, height: 120},
-                    {x: 108, y: 0, width: 104, height: 120},
-                    {x: 214, y: 0, width: 104, height: 120},
-                    {x: 322, y: 0, width: 104, height: 120}
+                    {x: 0, y: 0, width: 220, height: 270},
+                    {x: 250, y: 0, width: 220, height: 270},
+                    {x: 494, y: 0, width: 220, height: 270},
+                    {x: 745, y: 0, width: 220, height: 270}
                 ],
                 EffectHabilitySpecial: [
-                    {x: 5, y: 480, width: 60, height: 80},
-                    {x: 108, y: 480, width: 60, height: 80}
+                    {x: 1, y: 1160, width: 124, height: 160},
+                    {x: 260, y: 1160, width: 124, height: 160}
                 ]
             }
         },
         mirror: {
             animation: {
                 Stopped: [
-                    {x: 597, y: 116, width: 104, height: 121},
-                    {x: 489, y: 116, width: 104, height: 121},
-                    {x: 384, y: 116, width: 104, height: 121},
-                    {x: 281, y: 116, width: 105, height: 121}
+                    {x: 1400, y: 270, width: 204, height: 281},
+                    {x: 1150, y: 270, width: 204, height: 281},
+                    {x: 905, y: 270, width: 204, height: 281},
+                    {x: 665, y: 270, width: 204, height: 281}
                 ],
                 Waking: [
-                    {x: 597, y: 357, width: 104, height: 121},
-                    {x: 497, y: 357, width: 104, height: 121},
-                    {x: 384, y: 357, width: 104, height: 121},
-                    {x: 276, y: 357, width: 104, height: 121},
-                    {x: 168, y: 357, width: 104, height: 121}
-                ],
-                Bend: [
-                    {x: 597, y: 1080, width: 104, height: 121}
+                    {x: 1400, y: 830, width: 204, height: 281},
+                    {x: 1157, y: 830, width: 204, height: 281},
+                    {x: 905, y: 830, width: 204, height: 281},
+                    {x: 635, y: 830, width: 204, height: 281},
+                    {x: 385, y: 830, width: 208, height: 281}
                 ],
                 Jump: [
-                    {x: 497, y: 960, width: 104, height: 121},
-                    {x: 384, y: 960, width: 104, height: 121},
-                    {x: 276, y: 960, width: 104, height: 121},
-                    {x: 170, y: 960, width: 104, height: 121},
-                    {x: 68, y: 960, width: 104, height: 121}
+                    {x: 1157, y: 2300, width: 204, height: 340},
+                    {x: 897, y: 2300, width: 204, height: 340},
+                    {x: 653, y: 2300, width: 204, height: 340},
+                    {x: 410, y: 2300, width: 204, height: 340},
+                    {x: 1157, y: 2300, width: 204, height: 340},
+                ],
+                Bend: [
+                    {x: 1400, y: 2600, width: 204, height: 281}
                 ],
                 Punch: [
-                    {x: 597, y: 237, width: 104, height: 122},
-                    {x: 490.5, y: 237, width: 104, height: 120},
-                    {x: 384, y: 237, width: 104, height: 122}
+                    {x: 1400, y: 552, width: 204, height: 277},
+                    {x: 1152, y: 552, width: 204, height: 277},
+                    {x: 1400, y: 552, width: 204, height: 277}
                 ],
                 Kick: [
-                    {x: 595, y: 715, width: 104, height: 121},
-                    {x: 497, y: 715, width: 104, height: 121},
-                    {x: 386, y: 715, width: 115, height: 121},
-                    {x: 276, y: 715, width: 104, height: 121},
-                    {x: 173.5, y: 715, width: 104, height: 121}
+                    {x: 1150, y: 1700, width: 260, height: 277},
+                    {x: 905, y: 1700, width: 260, height: 277},
+                    {x: 1150, y: 1700, width: 260, height: 277}
                 ],
                 SuperKick: [
-                    {x: 173.5, y: 837, width: 104, height: 120},
-                    {x: 286, y: 837, width: 104, height: 120},
-                    {x: 398, y: 837, width: 115, height: 120},
-                    {x: 502, y: 837, width: 104, height: 120},
-                    {x: 605, y: 837, width: 104, height: 121}
+                    {x: 384, y: 1980, width: 240, height: 277},
+                    {x: 645, y: 1980, width: 240, height: 277},
+                    {x: 905, y: 1980, width: 245, height: 277},
+                    {x: 1155, y: 1980, width: 240, height: 277},
+                    {x: 1400, y: 1980, width: 240, height: 277}
                 ],
                 Special: [
-                    {x: 597, y: 0, width: 104, height: 118},
-                    {x: 489, y: 0, width: 104, height: 117},
-                    {x: 384, y: 0, width: 104, height: 117},
-                    {x: 276, y: 0, width: 104, height: 120}
+                    {x: 1400, y: 0, width: 240, height: 271},
+                    {x: 1155, y: 0, width: 240, height: 271},
+                    {x: 910, y: 0, width: 240, height: 271},
+                    {x: 659, y: 0, width: 240, height: 271}
                 ],
                 EffectHabilitySpecial: [
-                    {x: 597, y: 480, width: 104, height: 118},
-                    {x: 489, y: 480, width: 104, height: 117}
+                    {x: 1495, y: 1160, width: 124, height: 160},
+                    {x: 1250, y: 1160, width: 124, height: 160}
                 ]
             }
         }

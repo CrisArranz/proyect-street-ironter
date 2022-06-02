@@ -1,5 +1,5 @@
 class Ken extends Character {
-    constructor(context, positionX, positionY, typeAnimation = 'Waking', isMirrorring){
+    constructor(context, positionX, positionY, typeAnimation = 'Stopped', isMirrorring){
         super(
             context, 
             typeAnimation, 

@@ -23,6 +23,23 @@ class Picasso {
     draw(){
         const mode = this.isMirrorring ? 'mirror' : 'noMirror';
         const sprite = this.isMirrorring ? this.sprites.mirror : this.sprites.noMirror;
+        let height = 0;
+        let width = 0;
+        switch(this.typeAnimation) {
+            case 'EffectHabilitySpecial':
+                height = HEIGHT_SPECIAL_ANIMATED;
+                width = WIDTH_SPECIAL_ANIMATED;
+                break;
+            case 'firstPeople':
+                height = HEIGHT_CHARACTERS;
+                width = WIDTH_CHARACTERS - 30;
+                break;
+            default:
+                height = HEIGHT_CHARACTERS;
+                width = WIDTH_CHARACTERS;
+                break;
+        }
+
         if (this.status === 'static') {
             this.context.drawImage(
                 sprite, 
@@ -44,8 +61,8 @@ class Picasso {
                 this.framesPicture[mode][this.status][this.typeAnimation][this.frameCount].height,
                 this.positionX,
                 this.positionY,
-                this.framesPicture[mode][this.status][this.typeAnimation][this.frameCount].width,
-                this.framesPicture[mode][this.status][this.typeAnimation][this.frameCount].height
+                width,
+                height
             );
         }
     }
