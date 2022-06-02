@@ -130,10 +130,10 @@ class Character extends AnimatedSprite {
                 this.directionCharacter('Special');
                 this.coolDownSpecial = -0.1;
                 this.soundSpecial.play();
-                if (this.specialEffect.length === 0) {
+                if (this.specialEffect.length === 0 && this.framesPicture.noMirror.animation.EffectHabilitySpecial) {
                     const effect = new Special(
                         this.context,
-                        this.isMirrorring ? this.positionX - 90 : this.positionX + 90,
+                        this.isMirrorring ? this.positionX - 60 : this.positionX + 60,
                         this.positionY,
                         'EffectHabilitySpecial',
                         this.framesPicture,

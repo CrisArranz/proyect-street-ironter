@@ -15,9 +15,8 @@ class Picasso {
             let spritePictures = new Image();
             spritePictures.src = framesPicture.url[sprite]
             objectSprites[sprite] = spritePictures;
-
             return objectSprites;
-        },{})
+        },{});
     }
 
     draw(){
