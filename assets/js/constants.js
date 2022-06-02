@@ -53,4 +53,17 @@ const POWER_ATTACKS = {
     special: 100
 }
 
+const DURATION_FIGHT = 60;
+
+const POSITION_LIVES = {
+    left: {
+        border: {x: 20, y: 30},
+        fill: {x: 28, y: 36}
+    },
+    right: {
+        border: {x: 610, y: 30},
+        fill: {x: 618, y: 36}
+    }
+}
+
 const SOUND_PUNCH = new Audio('./assets/sounds/punch.mp3');

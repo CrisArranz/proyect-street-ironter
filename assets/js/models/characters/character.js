@@ -27,6 +27,8 @@ class Character extends AnimatedSprite {
         this.coolDownTimer = JSON.parse(JSON.stringify(COOLDOWN_HABILITIES));
         this.coolDownSpecial = 0;
         this.coolDownSuperKick = 0;
+
+        this.live = new Live(this.context, positionX);
     }
 
     draw(){
