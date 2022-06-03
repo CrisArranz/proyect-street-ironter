@@ -235,6 +235,136 @@ const frameImages = {
             }
         }
     },
+    chunli: {
+        url: {
+            noMirror: './assets/images/characters/chunli.png',
+            mirror: './assets/images/characters/chunli.mirror.png'
+        },
+        noMirror: {
+            animation: {
+                Stopped: [
+                    {x: 0, y: -5, width: 201, height: 290},
+                    {x: 180, y: -5, width: 201, height: 290},
+                    {x: 356, y: -5, width: 201, height: 290},
+                    {x: 536, y: -5, width: 201, height: 290}
+                ],
+                Waking: [
+                    {x: 0, y: 290, width: 201, height: 275},
+                    {x: 180, y: 290, width: 201, height: 275},
+                    {x: 376, y: 290, width: 201, height: 275},
+                    {x: 585, y: 290, width: 201, height: 275},
+                    {x: 805, y: 290, width: 201, height: 275},
+                    {x: 585, y: 290, width: 201, height: 275},
+                    {x: 376, y: 290, width: 201, height: 275},
+                    {x: 180, y: 290, width: 201, height: 275}
+                ],
+                Jump: [
+                    {x: 1700, y: 10, width: 201, height: 350},
+                    {x: 1870, y: 0, width: 130, height: 350, minusWidth: -20},
+                    {x: 2010, y: 0, width: 150, height: 350, minusWidth: -15},
+                    {x: 1870, y: 0, width: 130, height: 350, minusWidth: -20}
+                ],
+                Bend: [
+                    {x: 200, y: 2700, width: 201, height: 300}
+                ],
+                Punch: [
+                    {x: 0, y: 554, width: 201, height: 298},
+                    {x: 240, y: 547, width: 280, height: 296, minusWidth: 25},
+                    {x: 0, y: 554, width: 201, height: 298}
+                ],
+                Kick: [
+                    {x: 0, y: 825, width: 201, height: 298},
+                    {x: 200, y: 825, width: 201, height: 298},
+                    {x: 5, y: 1120, width: 250, height: 304, minusWidth: 15},
+                    {x: 200, y: 825, width: 201, height: 298},
+                    {x: 0, y: 825, width: 201, height: 298}
+                ],
+                SuperKick: [
+                    {x: 675, y: 2100, width: 201, height: 298},
+                    {x: 445, y: 2100, width: 231, height: 298, minusWidth: 12},
+                    {x: 157, y: 2079, width: 260, height: 298, minusWidth: 12, minusHeight: -6},
+                    {x: 0, y: 2100, width: 190, height: 298}
+                ],
+                Special: [
+                    {x: 0, y: 2400, width: 160, height: 340, minusWidth: -15},
+                    {x: 170, y: 2400, width: 220, height: 340},
+                    {x: 400, y: 2370, width: 160, height: 349, minusWidth: -15},
+                    {x: 570, y: 2400, width: 220, height: 340}
+                ],
+                EffectHabilitySpecial: [
+                    {x: 15, y: 1450, width: 115, height: 150},
+                    {x: 130, y: 1450, width: 115, height: 150},
+                    {x: 275, y: 1450, width: 115, height: 150},
+                    {x: 395, y: 1450, width: 115, height: 150},
+                    {x: 520, y: 1450, width: 135, height: 150},
+                    {x: 650, y: 1450, width: 135, height: 150},
+                    {x: 792, y: 1450, width: 135, height: 150}
+                ]
+            }
+        },
+        mirror: {
+            animation: {
+                Stopped: [
+                    {x: 0, y: -5, width: 201, height: 290},
+                    {x: 180, y: -5, width: 197, height: 290},
+                    {x: 356, y: -5, width: 201, height: 290},
+                    {x: 536, y: -5, width: 201, height: 290}
+                ],
+                Waking: [
+                    {x: 1350, y: 290, width: 210, height: 275, minusWidth: 7},
+                    {x: 0, y: 290, width: 201, height: 275},
+                    {x: 215, y: 290, width: 160, height: 275, minusWidth: -10},
+                    {x: 785, y: 290, width: 170, height: 275, minusWidth: -10},
+                    {x: 583, y: 290, width: 201, height: 275},
+                    {x: 785, y: 290, width: 170, height: 275, minusWidth: -10},
+                    {x: 215, y: 290, width: 160, height: 275, minusWidth: -10},
+                    {x: 0, y: 290, width: 201, height: 275}
+                ],
+                Jump: [
+                    {x: 2120, y: 10, width: 201, height: 350},
+                    {x: 2000, y: 0, width: 140, height: 350, minusWidth: -25},
+                    {x: 1860, y: 0, width: 145, height: 350, minusWidth: -15},
+                    {x: 2000, y: 0, width: 140, height: 350, minusWidth: -25},
+                ],
+                Bend: [
+                    {x: 100, y: 2732, width: 201, height: 265}
+                ],
+                Punch: [
+                    {x: 0, y: 560, width: 201, height: 280, minusWidth: 20},
+                    {x: 250, y: 560, width: 280, height: 280, minusWidth: 40},
+                    {x: 0, y: 560, width: 201, height: 280, minusWidth: 20},
+                ],
+                Kick: [
+                    {x: 200, y: 825, width: 201, height: 298},
+                    {x: 0, y: 825, width: 201, height: 298},
+                    {x: 45, y: 1120, width: 250, height: 304, minusWidth: 15},
+                    {x: 0, y: 825, width: 201, height: 298},
+                    {x: 200, y: 825, width: 201, height: 298}
+                ],
+                SuperKick: [
+                    {x: 0, y: 2078, width: 190, height: 298},
+                    {x: 214, y: 2078, width: 200, height: 298, minusWidth: 5},
+                    {x: 458, y: 2078, width: 260, height: 298, minusWidth: 20},
+                    {x: 692, y: 2078, width: 200, height: 298, minusWidth: 5}
+                ],
+                Special: [
+                    {x: 620, y: 2400, width: 220, height: 340},
+                    {x: 420, y: 2400, width: 220, height: 349, minusWidth: -5},
+                    {x: 230, y: 2400, width: 160, height: 340, minusWidth: -25},
+                    {x: 0, y: 2400, width: 220, height: 340, minusWidth: -5},
+                ],
+                EffectHabilitySpecial: [
+                    {x: 819, y: 1450, width: 110, height: 150},
+                    {x: 693, y: 1450, width: 115, height: 150},
+                    {x: 560, y: 1450, width: 110, height: 150},
+                    {x: 435, y: 1450, width: 125, height: 150},
+                    {x: 305, y: 1450, width: 125, height: 150},
+                    {x: 155, y: 1450, width: 135, height: 150},
+                    {x: 15, y: 1450, width: 135, height: 150},
+                ]
+            }
+        }
+    },
     background : {
         url: {
             noMirror: './assets/images/stage/stage-ironter.png'

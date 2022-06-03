@@ -18,7 +18,7 @@ const KEY_LEFTBOARD_SPECIALPRESSED = 32;
 
 const TICK_PER_SECOND = {
     character: 4,
-    special: 20,
+    special: 6,
     background: 90
 }
 
@@ -31,7 +31,7 @@ const VELOCITY_HABILITY_SPECIAL_X = 2.5;
 
 const ROUTE_HABILITY_SPECIAL = 150;
 
-const WIDTH_CHARACTERS = 95;
+const WIDTH_CHARACTERS = 70;
 const HEIGHT_CHARACTERS = 120;
 
 const WIDTH_SPECIAL_ANIMATED = 60;

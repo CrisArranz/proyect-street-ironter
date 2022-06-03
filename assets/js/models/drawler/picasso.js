@@ -31,11 +31,11 @@ class Picasso {
                 break;
             case 'firstPeople':
                 height = HEIGHT_CHARACTERS;
-                width = WIDTH_CHARACTERS - 30;
+                width = WIDTH_CHARACTERS;
                 break;
             default:
-                height = HEIGHT_CHARACTERS;
-                width = WIDTH_CHARACTERS;
+                height = HEIGHT_CHARACTERS + (this.status === 'animation' && this.framesPicture[mode][this.status][this.typeAnimation][this.frameCount].minusHeight ? this.framesPicture[mode][this.status][this.typeAnimation][this.frameCount].minusHeight : 0);
+                width = WIDTH_CHARACTERS + (this.status === 'animation' && this.framesPicture[mode][this.status][this.typeAnimation][this.frameCount].minusWidth ? this.framesPicture[mode][this.status][this.typeAnimation][this.frameCount].minusWidth : 0);
                 break;
         }
 
