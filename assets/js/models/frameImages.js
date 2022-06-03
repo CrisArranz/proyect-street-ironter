@@ -468,9 +468,9 @@ const frameImages = {
                     {x: 35, y: 729, width: 120, height: 190}
                 ],
                 Punch: [
-                    {x: 15, y: 949, width: 113, height: 190},
-                    {x: 160, y: 949, width: 135, height: 190, minusWidth: 12},
-                    {x: 15, y: 949, width: 113, height: 190}
+                    {x: 15, y: 958, width: 113, height: 190, minusWidth: -10},
+                    {x: 160, y: 958, width: 125, height: 190, minusWidth: -5},
+                    {x: 15, y: 958, width: 113, height: 190, minusWidth: -10}
                 ],
                 Kick: [
                     {x: 0, y: 1175, width: 113, height: 190},

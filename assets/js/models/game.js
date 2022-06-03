@@ -1,8 +1,8 @@
 class Game {
     constructor(idCanvas) {
         this.context = document.getElementById(idCanvas).getContext('2d');
-        this.player1 = new Ryu(this.context, (this.context.canvas.width / 2) + START_RIGHT_SIDE, this.context.canvas.height - HEIGHT_BATTLEFIELD_CHARACTER);
-        //this.player2 = new Ken(this.context, (this.context.canvas.width / 2) + START_RIGHT_SIDE, this.context.canvas.height - HEIGHT_BATTLEFIELD_CHARACTER);
+        this.player1 = new Ryu(this.context, (this.context.canvas.width / 2) + START_LEFT_SIDE, this.context.canvas.height - HEIGHT_BATTLEFIELD_CHARACTER);
+        this.player2 = new Honda(this.context, (this.context.canvas.width / 2) + START_RIGHT_SIDE, this.context.canvas.height - HEIGHT_BATTLEFIELD_CHARACTER);
         this.imageBackgroundAnimated = [];
         this.imageBackgroundStatic = [];
         this.imageBackgroundAnimated.push(new AnimatedBackground(this.context, 55, 310, 'firstPeople')) 
@@ -43,9 +43,9 @@ class Game {
         //this.timer.draw();
         this.player1.draw();
         // this.player1.live.draw();
-        // this.player2.draw();
+        this.player2.draw();
         // this.player2.live.draw();
         this.player1.coolDownHabilities();
-        // this.player2.coolDownHabilities();
+        this.player2.coolDownHabilities();
     }
 }
