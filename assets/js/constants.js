@@ -50,10 +50,10 @@ const COOLDOWN_HABILITIES = {
 };
 
 const POWER_ATTACKS = {
-    punch : 8,
-    kick: 12,
-    superkick: 24,
-    special: 100
+    punch : 16,
+    kick: 24,
+    superkick: 48,
+    special: 70
 }
 
 const DURATION_FIGHT = 60;

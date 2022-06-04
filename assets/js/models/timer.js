@@ -8,7 +8,7 @@ class Timer {
 
     draw() {
         this.context.beginPath();
-        this.context.fillText(this.duration.toString().padStart(2,0), 510, 60)
+        this.context.fillText(this.duration.toString().padStart(2,0), 510, 60);
         this.context.closePath();
 
         this.calculateSeconds();

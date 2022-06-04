@@ -294,4 +294,31 @@ class Character extends AnimatedSprite {
             this.coolDownSuperKick = 0;
         }
     }
+
+    collision(oponent) {
+        Object.keys(this.movements).forEach((movement) => {
+            if (
+                this.positionX <= oponent.positionX + WIDTH_CHARACTERS &&
+                this.positionX + WIDTH_CHARACTERS > oponent.positionX
+            ) {
+                switch(movement) {
+                    case 'punchPressed':
+                        if (this.movements[movement]) {    
+                            oponent.live.live -= this.powerAttacks.punch;
+                        }
+                        break;
+                    case 'kickPressed':
+                        if (this.movements[movement]) {
+                            oponent.live.live -= this.powerAttacks.kick;
+                        }
+                        break;
+                    case 'superKickPressed':
+                        if ((this.movements[movement] || this.coolDownTimer.superKick !== COOLDOWN_HABILITIES.superKick) && this.coolDownTimer.superKick >= COOLDOWN_HABILITIES.superKick - CAST_HABILITY_DURATION) {
+                            oponent.live.live -= this.powerAttacks.superkick;
+                        }
+                        break;
+                }
+            }
+        })
+    }
 }

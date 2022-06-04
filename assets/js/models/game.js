@@ -2,7 +2,7 @@ class Game {
     constructor(idCanvas) {
         this.context = document.getElementById(idCanvas).getContext('2d');
         this.player1 = new Ryu(this.context, (this.context.canvas.width / 2) + START_LEFT_SIDE, this.context.canvas.height - HEIGHT_BATTLEFIELD_CHARACTER);
-        this.player2 = new Honda(this.context, (this.context.canvas.width / 2) + START_RIGHT_SIDE, this.context.canvas.height - HEIGHT_BATTLEFIELD_CHARACTER);
+        this.player2 = new Ken(this.context, (this.context.canvas.width / 2) + START_RIGHT_SIDE, this.context.canvas.height - HEIGHT_BATTLEFIELD_CHARACTER);
         this.imageBackgroundAnimated = [];
         this.imageBackgroundStatic = [];
         this.imageBackgroundAnimated.push(new AnimatedBackground(this.context, 55, 310, 'firstPeople')) 
@@ -34,20 +34,36 @@ class Game {
 
     draw() {
         this.player1.clear();
+        
+        if (!this.timer.duration || this.player1.live.live <= 0 || this.player2.live.live <= 0) {
+            this.stop();
+        }
         this.imageBackgroundStatic.forEach((background) => {
             background.draw();
         });
         this.imageBackgroundAnimated.forEach((background) => {
             background.draw();
         });
-        //this.timer.draw();
+        this.timer.draw();
         this.player1.positionOponent = this.player2.positionX;
         this.player1.draw();
-        // this.player1.live.draw();
+        this.player1.live.draw();
         this.player2.positionOponent = this.player1.positionX;
         this.player2.draw();
-        // this.player2.live.draw();
+        this.player2.live.draw();
         this.player1.coolDownHabilities();
         this.player2.coolDownHabilities();
+        this.player1.collision(this.player2);
+        this.player2.collision(this.player1);
+        if (this.player1.specialEffect.length) {
+            this.player1.specialEffect.forEach((special) => {
+                special.collision(this.player1, this.player2);
+            })
+        }
+        if (this.player2.specialEffect.length) {
+            this.player2.specialEffect.forEach((special) => {
+                special.collision(this.player2, this.player1);
+            })
+        }
     }
 }
