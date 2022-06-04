@@ -19,8 +19,4 @@ class Live {
         this.context.lineWidth = prevLineWidth;
         this.context.closePath();
     }
-
-    restLive() {
-
-    }
 }
