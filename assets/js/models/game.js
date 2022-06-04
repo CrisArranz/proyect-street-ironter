@@ -41,8 +41,10 @@ class Game {
             background.draw();
         });
         //this.timer.draw();
+        this.player1.positionOponent = this.player2.positionX;
         this.player1.draw();
         // this.player1.live.draw();
+        this.player2.positionOponent = this.player1.positionX;
         this.player2.draw();
         // this.player2.live.draw();
         this.player1.coolDownHabilities();

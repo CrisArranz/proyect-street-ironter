@@ -28,6 +28,8 @@ class Character extends AnimatedSprite {
         this.coolDownSpecial = 0;
         this.coolDownSuperKick = 0;
 
+        this.positionOponent = 0;
+
         this.live = new Live(this.context, positionX);
     }
 
@@ -271,7 +273,7 @@ class Character extends AnimatedSprite {
     }
 
     directionCharacter(action) {
-        if ((this.context.canvas.width / 2) > this.positionX + WIDTH_CHARACTERS) {
+        if (this.positionOponent > this.positionX) {
             this.isMirrorring = false;
         } else {
             this.isMirrorring = true;
