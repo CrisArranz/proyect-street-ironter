@@ -2,7 +2,7 @@ class Timer {
     constructor(context) {
         this.context = context;
         this.duration = DURATION_FIGHT;
-        this.context.font = "48px Verdana";
+        this.context.font = "bold 70px street-fighter";
         this.tick = 0;
     }
 

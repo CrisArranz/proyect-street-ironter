@@ -15,6 +15,10 @@ class Game {
         this.imageBackgroundStatic.push(new StaticBackground(this.context, 0, 20, 'plain'));
         this.imageBackgroundStatic.push(new StaticBackground(this.context, 0, 352 , 'road'));
 
+        this.messages = {};
+        this.messages['ko'] = (new Message(this.context,'ko'));
+        this.messages['timeout'] = (new Message(this.context,'timeout'));
+
         this.timer = new Timer(this.context);
 
         this.intervalId = null;
@@ -35,21 +39,41 @@ class Game {
     draw() {
         this.player1.clear();
         
-        if (!this.timer.duration || this.player1.live.live <= 0 || this.player2.live.live <= 0) {
-            this.stop();
-        }
         this.imageBackgroundStatic.forEach((background) => {
             background.draw();
         });
         this.imageBackgroundAnimated.forEach((background) => {
             background.draw();
         });
+        if (!this.timer.duration || this.player1.live.live <= 0 || this.player2.live.live <= 0) {
+            const interval = setInterval(() => {
+                if (this.messages.ko.positionY > 200 || this.messages.timeout.positionY > 200) {
+                    clearInterval(interval);
+                }
+                this.player1.clear();
+                this.imageBackgroundStatic.forEach((background) => {
+                    background.draw();
+                });
+                this.imageBackgroundAnimated.forEach((background) => {
+                    background.draw();
+                });
+                !this.timer.duration ? this.messages.timeout.draw() : this.messages.ko.draw();
+                this.timer.draw();
+                this.player1.draw();
+                this.player1.live.draw();
+                this.player2.draw();
+                this.player2.live.draw();
+            }, 1000 / this.fps);
+            this.stop();
+        }
         this.timer.draw();
         this.player1.positionOponent = this.player2.positionX;
         this.player1.draw();
+        this.player1.animate();
         this.player1.live.draw();
         this.player2.positionOponent = this.player1.positionX;
         this.player2.draw();
+        this.player2.animate();
         this.player2.live.draw();
         this.player1.coolDownHabilities();
         this.player2.coolDownHabilities();

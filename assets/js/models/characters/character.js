@@ -35,7 +35,6 @@ class Character extends AnimatedSprite {
 
     draw(){
         super.draw();
-        this.animate();
         this.specialEffect.forEach((effect) => {
             effect.draw();
         });

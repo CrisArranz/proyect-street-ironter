@@ -41,7 +41,7 @@ const HEIGHT_BATTLEFIELD_CHARACTER = 150;
 const HEIGHT_BATTLEFIELD_BACKGROUND = 100;
 
 const START_LEFT_SIDE = -260;
-const START_RIGHT_SIDE = 260;
+const START_RIGHT_SIDE = 140;
 
 const CAST_HABILITY_DURATION = 2.5;
 const COOLDOWN_HABILITIES = {
@@ -57,6 +57,11 @@ const POWER_ATTACKS = {
 }
 
 const DURATION_FIGHT = 60;
+const VELOCITY_MESSAGE = 10;
+const WIDTH_MESSAGE_END = {
+    ko: 50,
+    timeout: 100
+}
 
 const POSITION_LIVES = {
     left: {
