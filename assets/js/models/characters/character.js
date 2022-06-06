@@ -81,8 +81,7 @@ class Character extends AnimatedSprite {
     }
 
     move() {
-        const soundPunch = SOUND_PUNCH;
-        soundPunch.volume = 0.5;
+        const sounds = SOUNDS_GAME;
 
         if (this.movements.leftPressed) {
             if (this.positionX >= 0) {
@@ -113,18 +112,21 @@ class Character extends AnimatedSprite {
         } else if (this.movements.punchPressed) {
             if (!this.prevTypeAnimation.includes('Jump')) {
                 this.directionCharacter('Punch');
-                soundPunch.play();
+                sounds.punch.volume = 0.5;
+                sounds.punch.play();
             }
         } else if (this.movements.kickPressed) {
             if (!this.prevTypeAnimation.includes('Jump')) {
                 this.directionCharacter('Kick');
-                soundPunch.play();
+                sounds.kick.volume = 0.5;
+                sounds.kick.play();
             }
         } else if ((this.movements.superKickPressed || this.coolDownTimer.superKick !== COOLDOWN_HABILITIES.superKick) && this.coolDownTimer.superKick >= COOLDOWN_HABILITIES.superKick - CAST_HABILITY_DURATION) {
             if (!this.prevTypeAnimation.includes('Jump')) {
                 this.directionCharacter('SuperKick');
                 this.coolDownSuperKick = -0.1;
-                soundPunch.play();
+                sounds.superKick.volume = 0.5;
+                sounds.superKick.play();
             }
         } else if ((this.movements.specialPressed || this.coolDownTimer.special !== COOLDOWN_HABILITIES.special) && this.coolDownTimer.special >= COOLDOWN_HABILITIES.special - CAST_HABILITY_DURATION) {
             if (!this.prevTypeAnimation.includes('Jump')) {

@@ -74,4 +74,20 @@ const POSITION_LIVES = {
     }
 }
 
-const SOUND_PUNCH = new Audio('./assets/sounds/punch.mp3');
+const SOUNDS_GAME = {
+    punch: new Audio('./assets/sounds/punch_sound.wav'),
+    kick: new Audio('./assets/sounds/kick_sound.wav'),
+    superKick: new Audio('./assets/sounds/superkick_sound.mp3'),
+    selectionCharacter: new Audio('./assets/sounds/character_select.mp3'),
+    selectedCharacter: new Audio('./assets/sounds/selected.wav'),
+    titleTheme: new Audio('./assets/sounds/main.mp3'),
+    fight: new Audio('./assets/sounds/fight.wav'),
+    ko: new Audio('./assets/sounds/ko.wav'),
+    timeover: new Audio('./assets/sounds/timeover.wav'),
+    battlefield: [
+        new Audio('./assets/sounds/chunli/chunli_theme.mp3'),
+        new Audio('./assets/sounds/ken/ken_theme.mp3'),
+        new Audio('./assets/sounds/ryu/ryu_theme.mp3'),
+        new Audio('./assets/sounds/honda/honda_theme.mp3')
+    ]
+}

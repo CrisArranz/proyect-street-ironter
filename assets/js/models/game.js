@@ -1,8 +1,16 @@
 class Game {
     constructor(idCanvas) {
         this.context = document.getElementById(idCanvas).getContext('2d');
-        this.player1 = new Ryu(this.context, (this.context.canvas.width / 2) + START_LEFT_SIDE, this.context.canvas.height - HEIGHT_BATTLEFIELD_CHARACTER);
-        this.player2 = new Ken(this.context, (this.context.canvas.width / 2) + START_RIGHT_SIDE, this.context.canvas.height - HEIGHT_BATTLEFIELD_CHARACTER);
+        this.player1 = new Honda(this.context, (this.context.canvas.width / 2) + START_LEFT_SIDE, this.context.canvas.height - HEIGHT_BATTLEFIELD_CHARACTER);
+        this.player2 = new Chunli(this.context, (this.context.canvas.width / 2) + START_RIGHT_SIDE, this.context.canvas.height - HEIGHT_BATTLEFIELD_CHARACTER);
+
+        this.playerUnknown = [
+            new Chunli(this.context, (this.context.canvas.width / 2) + START_RIGHT_SIDE, this.context.canvas.height - HEIGHT_BATTLEFIELD_CHARACTER),
+            new Ken(this.context, (this.context.canvas.width / 2) + START_RIGHT_SIDE, this.context.canvas.height - HEIGHT_BATTLEFIELD_CHARACTER), 
+            new Ryu(this.context, (this.context.canvas.width / 2) + START_RIGHT_SIDE, this.context.canvas.height - HEIGHT_BATTLEFIELD_CHARACTER), 
+            new Honda(this.context, (this.context.canvas.width / 2) + START_RIGHT_SIDE, this.context.canvas.height - HEIGHT_BATTLEFIELD_CHARACTER)
+        ]
+
         this.imageBackgroundAnimated = [];
         this.imageBackgroundStatic = [];
         this.imageBackgroundAnimated.push(new AnimatedBackground(this.context, 55, 310, 'firstPeople')) 
@@ -17,15 +25,19 @@ class Game {
 
         this.messages = {};
         this.messages['ko'] = (new Message(this.context,'ko'));
-        this.messages['timeout'] = (new Message(this.context,'timeout'));
+        this.messages['timeout'] = (new Message(this.context,'time over'));
 
         this.timer = new Timer(this.context);
 
         this.intervalId = null;
         this.fps = FPS;
+
+        this.randomSoundSelected = Math.floor(Math.random() * SOUNDS_GAME.battlefield.length);
     }
 
     start() {
+        // SOUNDS_GAME.battlefield[this.randomSoundSelected].volume = 0.3;
+        // SOUNDS_GAME.battlefield[this.randomSoundSelected].play();
         this.intervalId = setInterval(() => {
             this.draw();
         }, 1000 / this.fps)
@@ -33,6 +45,7 @@ class Game {
 
     stop() {
         clearInterval(this.intervalId);
+        // SOUNDS_GAME.battlefield[this.randomSoundSelected].pause();
         this.intervalId = null;
     }
 
@@ -48,6 +61,11 @@ class Game {
         if (!this.timer.duration || this.player1.live.live <= 0 || this.player2.live.live <= 0) {
             const interval = setInterval(() => {
                 if (this.messages.ko.positionY > 200 || this.messages.timeout.positionY > 200) {
+                    if(!this.timer.duration) {
+                        SOUNDS_GAME.timeover.play();
+                    } else if(this.player1.live.live <= 0 || this.player2.live.live <= 0) {
+                        SOUNDS_GAME.ko.play();
+                    }
                     clearInterval(interval);
                 }
                 this.player1.clear();

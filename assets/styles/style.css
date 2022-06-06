@@ -29,3 +29,85 @@ body {
     background-color: rgb(68, 148, 240);
     display: block;
 }
+
+.interface{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 50rem;
+    font-family: 'street-fighter';
+}
+
+.no-visible {
+    visibility: hidden;
+}
+
+.visible {
+    visibility: visible;
+}
+.interface__actions{
+    display: flex;
+    justify-content: center;
+    margin-top: 5rem;
+}
+.interface__actions-button{
+    font-size: 2rem;
+    margin-right: 1.5rem;
+    margin-left: 1.5rem;
+}
+
+.interfaces-buttons{
+    position: relative;
+}
+
+.interface__actions-button:hover{
+    color: white;
+    cursor: pointer;
+}
+
+.boardModal {
+    border: 1px solid black;
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    position: absolute;
+    background-color: white;
+}
+
+.boardModal__section{
+    display: flex;
+}
+
+.boardModal__image{
+    width: 100%;
+}
+
+.boardModal__close{
+    cursor: pointer;
+    border: none;
+    background-color: white;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) );
+    cursor: pointer;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.35s ease-in;
+}
+
+.modal.is-visible {
+    visibility: visible;
+    opacity: 1;
+}
