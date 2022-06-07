@@ -1,7 +1,7 @@
 class Message {
     constructor(context, message) {
         this.context = context;
-        this.positionX = this.context.canvas.width / 2 - WIDTH_MESSAGE_END[message];
+        this.positionX = this.context.canvas.width / 2 - WIDTH_MESSAGE_END[message.split(' ').join('')];
         this.positionY = 0;
 
         this.velocityY = VELOCITY_MESSAGE;

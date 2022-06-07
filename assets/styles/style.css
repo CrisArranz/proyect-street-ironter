@@ -30,13 +30,63 @@ body {
     display: block;
 }
 
-.interface{
+.section{
+    position: absolute;
+    top: 21%;
+    left: 21%;
+    background-color: black;
+}
+
+.section__interface{
+    display: flex;
+    justify-content: center;
+    font-family: 'street-fighter';
+    width: 1080px;
+    height: 625px;
+    color: white;
+}
+
+.section__interface-main{
+    flex-direction: column;
+    align-items: center;
+}
+
+.section__interface-main > img{
+    width: 50%;
+}
+
+.section__interface-selection-characters{
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.section__interface-banners{
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    min-height: 50rem;
-    font-family: 'street-fighter';
+}
+
+.section__interface-banners-player{
+    font-size: 5rem;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.section__interface-banners-character{
+    font-size: 2.5rem;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.section__interface-images {
+    border: 10px black solid;
+    border-radius: 5%;
+}
+
+.section__interface-images:hover {
+    border: 10px rgb(243, 82, 8) solid;
+    cursor: pointer;
 }
 
 .no-visible {
@@ -62,7 +112,7 @@ body {
 }
 
 .interface__actions-button:hover{
-    color: white;
+    color: rgba(255, 123, 0, 0.897);
     cursor: pointer;
 }
 

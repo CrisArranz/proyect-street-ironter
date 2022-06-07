@@ -60,7 +60,7 @@ const DURATION_FIGHT = 60;
 const VELOCITY_MESSAGE = 10;
 const WIDTH_MESSAGE_END = {
     ko: 50,
-    timeout: 100
+    timeover: 100
 }
 
 const POSITION_LIVES = {

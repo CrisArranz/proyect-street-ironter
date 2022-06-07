@@ -1,8 +1,8 @@
 class Game {
     constructor(idCanvas) {
         this.context = document.getElementById(idCanvas).getContext('2d');
-        this.player1 = new Honda(this.context, (this.context.canvas.width / 2) + START_LEFT_SIDE, this.context.canvas.height - HEIGHT_BATTLEFIELD_CHARACTER);
-        this.player2 = new Chunli(this.context, (this.context.canvas.width / 2) + START_RIGHT_SIDE, this.context.canvas.height - HEIGHT_BATTLEFIELD_CHARACTER);
+        this.player1 = new Ryu(this.context, (this.context.canvas.width / 2) + START_LEFT_SIDE, this.context.canvas.height - HEIGHT_BATTLEFIELD_CHARACTER);
+        this.player2 = new Ken(this.context, (this.context.canvas.width / 2) + START_RIGHT_SIDE, this.context.canvas.height - HEIGHT_BATTLEFIELD_CHARACTER);
 
         this.playerUnknown = [
             new Chunli(this.context, (this.context.canvas.width / 2) + START_RIGHT_SIDE, this.context.canvas.height - HEIGHT_BATTLEFIELD_CHARACTER),
@@ -25,7 +25,7 @@ class Game {
 
         this.messages = {};
         this.messages['ko'] = (new Message(this.context,'ko'));
-        this.messages['timeout'] = (new Message(this.context,'time over'));
+        this.messages['timeover'] = (new Message(this.context,'time over'));
 
         this.timer = new Timer(this.context);
 
@@ -36,8 +36,8 @@ class Game {
     }
 
     start() {
-        // SOUNDS_GAME.battlefield[this.randomSoundSelected].volume = 0.3;
-        // SOUNDS_GAME.battlefield[this.randomSoundSelected].play();
+        SOUNDS_GAME.battlefield[this.randomSoundSelected].volume = 0.3;
+        SOUNDS_GAME.battlefield[this.randomSoundSelected].play();
         this.intervalId = setInterval(() => {
             this.draw();
         }, 1000 / this.fps)
@@ -45,7 +45,7 @@ class Game {
 
     stop() {
         clearInterval(this.intervalId);
-        // SOUNDS_GAME.battlefield[this.randomSoundSelected].pause();
+        SOUNDS_GAME.battlefield[this.randomSoundSelected].pause();
         this.intervalId = null;
     }
 
@@ -60,7 +60,7 @@ class Game {
         });
         if (!this.timer.duration || this.player1.live.live <= 0 || this.player2.live.live <= 0) {
             const interval = setInterval(() => {
-                if (this.messages.ko.positionY > 200 || this.messages.timeout.positionY > 200) {
+                if (this.messages.ko.positionY > 200 || this.messages.timeover.positionY > 200) {
                     if(!this.timer.duration) {
                         SOUNDS_GAME.timeover.play();
                     } else if(this.player1.live.live <= 0 || this.player2.live.live <= 0) {
@@ -75,7 +75,7 @@ class Game {
                 this.imageBackgroundAnimated.forEach((background) => {
                     background.draw();
                 });
-                !this.timer.duration ? this.messages.timeout.draw() : this.messages.ko.draw();
+                !this.timer.duration ? this.messages.timeover.draw() : this.messages.ko.draw();
                 this.timer.draw();
                 this.player1.draw();
                 this.player1.live.draw();
