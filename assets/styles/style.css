@@ -34,16 +34,56 @@ body {
     position: absolute;
     top: 21%;
     left: 21%;
-    background-color: black;
+}
+
+.section__intro{
+    background-image: url('../images/interface/backgroundIntro.gif');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.section__selection-character {
+    background-image: url('../images/interface/selectionCharacter.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.section__tools {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    width: 100%;
+}
+
+.section__tools > img {
+    width: 25px;
+    margin: 10px;
+}
+
+.section__tools > img:hover {
+    filter: drop-shadow(0 0 0.5px black);
+}
+
+.section__title{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 10%;
+}
+
+.section__title-image{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .section__interface{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     font-family: 'street-fighter';
     width: 1080px;
     height: 625px;
-    color: white;
+    color: white
 }
 
 .section__interface-main{
@@ -81,12 +121,12 @@ body {
 }
 
 .section__interface-images {
-    border: 10px black solid;
+    border: 10px white solid;
     border-radius: 5%;
 }
 
 .section__interface-images:hover {
-    border: 10px rgb(243, 82, 8) solid;
+    border: 10px rgb(214, 82, 6) solid;
     cursor: pointer;
 }
 
@@ -99,8 +139,9 @@ body {
 }
 .interface__actions{
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    margin-top: 5rem;
+    margin-top: 5em;
 }
 .interface__actions-button{
     font-size: 2rem;
@@ -108,12 +149,21 @@ body {
     margin-left: 1.5rem;
 }
 
+.interface__actions-menu{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 1em;
+}
+
 .interfaces-buttons{
     position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 .interface__actions-button:hover{
-    color: rgba(255, 123, 0, 0.897);
+    color: black;
     cursor: pointer;
 }
 
