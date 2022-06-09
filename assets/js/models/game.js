@@ -1,15 +1,50 @@
 class Game {
-    constructor(idCanvas) {
+    constructor(idCanvas, selectedCharacters) {
         this.context = document.getElementById(idCanvas).getContext('2d');
-        this.player1 = new Ryu(this.context, (this.context.canvas.width / 2) + START_LEFT_SIDE, this.context.canvas.height - HEIGHT_BATTLEFIELD_CHARACTER);
-        this.player2 = new Ken(this.context, (this.context.canvas.width / 2) + START_RIGHT_SIDE, this.context.canvas.height - HEIGHT_BATTLEFIELD_CHARACTER);
 
-        this.playerUnknown = [
+        selectedCharacters.forEach((character, index) => {
+            switch(character){
+                case 'KEN':
+                    if(!index){
+                        this.player1 = new Ken(this.context, (this.context.canvas.width / 2) + START_LEFT_SIDE, this.context.canvas.height - HEIGHT_BATTLEFIELD_CHARACTER);
+                    } else {
+                        this.player2 = new Ken(this.context, (this.context.canvas.width / 2) + START_RIGHT_SIDE, this.context.canvas.height - HEIGHT_BATTLEFIELD_CHARACTER);
+                    }
+                    break;
+                case 'CHUNLI':
+                    if(!index){
+                        this.player1 = new Chunli(this.context, (this.context.canvas.width / 2) + START_LEFT_SIDE, this.context.canvas.height - HEIGHT_BATTLEFIELD_CHARACTER);
+                    } else {
+                        this.player2 = new Chunli(this.context, (this.context.canvas.width / 2) + START_RIGHT_SIDE, this.context.canvas.height - HEIGHT_BATTLEFIELD_CHARACTER);
+                    }
+                    break;
+                case 'RYU':
+                    if(!index){
+                        this.player1 = new Ryu(this.context, (this.context.canvas.width / 2) + START_LEFT_SIDE, this.context.canvas.height - HEIGHT_BATTLEFIELD_CHARACTER);
+                    } else {
+                        this.player2 = new Ryu(this.context, (this.context.canvas.width / 2) + START_RIGHT_SIDE, this.context.canvas.height - HEIGHT_BATTLEFIELD_CHARACTER);
+                    }
+                    break;
+                case 'HONDA':
+                    if(!index){
+                        this.player1 = new Honda(this.context, (this.context.canvas.width / 2) + START_LEFT_SIDE, this.context.canvas.height - HEIGHT_BATTLEFIELD_CHARACTER);
+                    } else {
+                        this.player2 = new Honda(this.context, (this.context.canvas.width / 2) + START_RIGHT_SIDE, this.context.canvas.height - HEIGHT_BATTLEFIELD_CHARACTER);
+                    }
+                    break;
+            }
+        })
+
+        const playerUnknown = [
             new Chunli(this.context, (this.context.canvas.width / 2) + START_RIGHT_SIDE, this.context.canvas.height - HEIGHT_BATTLEFIELD_CHARACTER),
             new Ken(this.context, (this.context.canvas.width / 2) + START_RIGHT_SIDE, this.context.canvas.height - HEIGHT_BATTLEFIELD_CHARACTER), 
             new Ryu(this.context, (this.context.canvas.width / 2) + START_RIGHT_SIDE, this.context.canvas.height - HEIGHT_BATTLEFIELD_CHARACTER), 
             new Honda(this.context, (this.context.canvas.width / 2) + START_RIGHT_SIDE, this.context.canvas.height - HEIGHT_BATTLEFIELD_CHARACTER)
-        ]
+        ];
+
+        if (selectedCharacters.length === 1) {
+            this.player2 = playerUnknown[Math.floor(Math.random() * playerUnknown.length)];
+        }
 
         this.imageBackgroundAnimated = [];
         this.imageBackgroundStatic = [];
@@ -67,6 +102,16 @@ class Game {
                         SOUNDS_GAME.ko.play();
                     }
                     clearInterval(interval);
+                    setTimeout(() => {
+                        document.querySelector('.container').classList.add('no-visible');
+                        document.querySelector('.container').classList.remove('visible');
+                        document.querySelector('.section__intro').classList.add('visible');
+                        document.querySelector('.section__intro').classList.remove('no-visible');
+                        document.querySelector('.interface__actions-menu-players').classList.add('no-visible');
+                        document.querySelector('.interface__actions-menu-players').classList.remove('visible');
+                        SOUNDS_GAME.titleTheme.volume = 0.3;
+                        SOUNDS_GAME.titleTheme.play();
+                    }, 4000)
                 }
                 this.player1.clear();
                 this.imageBackgroundStatic.forEach((background) => {

@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <link rel="stylesheet" href="./assets/styles/style.css" />
         <link rel="shortcut icon" href="./assets/images/interface/streetironter-logo.png">
         <title>Street Ironter</title>
     </head>
     <body>
-        <div class="section section__intro">
+        <div class="section section__intro visible">
             <div class="section__interface section__interface-main">
                 <div class="section__tools">
                     <img src="assets/images/interface/settings.png">
@@ -24,13 +24,32 @@
                             <a class="interface__actions-button interface__actions-button-start">START</a>
                             <a class="interface__actions-button interface__actions-button-controls">CONTROLS</a>
                         </div>
-                        <div class="interface__actions-menu no-visible">
-                            <a class="interface__actions-button interface__actions-button-one-player">1 PLAYER</a>
+                        <div class="interface__actions-menu interface__actions-menu-players no-visible">
+                            <a class="interface__actions-button interface__actions-button-one-player">1 PLAYER</a> -->
                             <a class="interface__actions-button interface__actions-button-two-player">2 PLAYER</a>
-                            <a class="interface__actions-button interface__actions-button-practice">PRACTICE</a>
+                            <a class="interface__actions-button interface__actions-button-practice">PRACTICE</a> -->
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="section section__selection-character no-visible">
+            <div class="section__interface section__interface-selection-characters">
+                <div class="section__interface-banners">
+                    <span class="section__interface-banners-player"></span>
+                    <span class="section__interface-banners-character"></span>
+                </div>
+                <div>
+                    <img id="ken" class="section__interface-images ken" src="./assets/images/interface/interface_ken.png" />
+                    <img id="chunli" class="section__interface-images chunli" src="./assets/images/interface/interface_chunli.png" />
+                    <img id="ryu" class="section__interface-images ryu" src="./assets/images/interface/interface_ryu.png" />
+                    <img id="honda" class="section__interface-images honda" src="./assets/images/interface/interface_honda.png" />
+                </div>
+            </div>
+        </div>
+        <div class="container no-visible">
+            <div class="container__center">
+                <canvas id="canvas-street-ironter" width="1080" height="512"></canvas>
             </div>
         </div>
 
@@ -41,6 +60,24 @@
                 </div>
             </div>
         </div>
+        
+        <script type="text/javascript" src="./assets/js/constants.js"></script>
+        <script type="text/javascript" src="./assets/js/models/frameImages.js"></script>
+        <script type="text/javascript" src="./assets/js/models/drawler/picasso.js"></script>
+        <script type="text/javascript" src="./assets/js/models/drawler/staticSprite.js"></script>
+        <script type="text/javascript" src="./assets/js/models/drawler/animatedSprite.js"></script>
+        <script type="text/javascript" src="./assets/js/models/live.js"></script>
+        <script type="text/javascript" src="./assets/js/models/characters/character.js"></script>
+        <script type="text/javascript" src="./assets/js/models/characters/ken.js"></script>
+        <script type="text/javascript" src="./assets/js/models/characters/honda.js"></script>
+        <script type="text/javascript" src="./assets/js/models/characters/chunli.js"></script>
+        <script type="text/javascript" src="./assets/js/models/characters/ryu.js"></script>
+        <script type="text/javascript" src="./assets/js/models/background/animatedBackground.js"></script>
+        <script type="text/javascript" src="./assets/js/models/background/staticBackground.js"></script>
+        <script type="text/javascript" src="./assets/js/models/special.js"></script>
+        <script type="text/javascript" src="./assets/js/models/timer.js"></script>
+        <script type="text/javascript" src="./assets/js/models/message.js"></script>
+        <script type="text/javascript" src="./assets/js/models/game.js"></script>
         <script type="text/javascript" src="./assets/js/index.js"></script>
     </body>
 </html>

@@ -91,3 +91,9 @@ const SOUNDS_GAME = {
         new Audio('./assets/sounds/honda/honda_theme.mp3')
     ]
 }
+
+const GAME_MODES = {
+    one_player: 1,
+    two_player: 2,
+    practice: 1
+}

@@ -1,21 +1,16 @@
 window.addEventListener('DOMContentLoaded', () => {
-    if (document.getElementById('canvas-street-ironter')) {
-        const game = new Game('canvas-street-ironter');
-        game.start();
 
-        document.addEventListener('keydown', (event) => {
-            game.player1.keyDownHandlerLeft(event);
-            game.player2.keyDownHandlerRight(event);
-        });
+    let numberOfCharacters = 1;
+    let countNumberOfCharacters = numberOfCharacters;
 
-        document.addEventListener('keyup', (event) => {
-            game.player1.keyUpHandlerLeft(event);
-            game.player2.keyUpHandlerRight(event);
-        });
-    }
+    SOUNDS_GAME.titleTheme.volume = 0.3;
+    SOUNDS_GAME.titleTheme.play();
 
     const controls = document.querySelectorAll('.interface__actions-button');
     const isVisible = "is-visible";
+
+    let arrayCharactersSelectd = [];
+
     if (controls) {
         controls.forEach((control) => {
             control.addEventListener("click", () => {
@@ -23,12 +18,23 @@ window.addEventListener('DOMContentLoaded', () => {
                     document.getElementById('boardModal').classList.add(isVisible);
                 }
                 if (control.innerText === 'START') {
+                    SOUNDS_GAME.selectedCharacter.play();
                     document.querySelector('.no-visible').classList.add('visible');
                     document.querySelector('.no-visible').classList.remove('no-visible');
                 }
-                if (control.innerText === '1 PLAYER') {
-                    location.href = "./selectedCharacter.html";
-                }
+                Object.keys(GAME_MODES).forEach((mode) => {
+                    if (control.innerText.toUpperCase() === mode.toUpperCase() || control.innerText.toUpperCase() === `${GAME_MODES[mode]} PLAYER`) {
+                        numberOfCharacters = GAME_MODES[mode];
+                        SOUNDS_GAME.selectedCharacter.play();
+                        SOUNDS_GAME.titleTheme.pause();
+                        document.querySelector('.section__intro').classList.add('no-visible');
+                        document.querySelector('.section__intro').classList.remove('visible');
+                        document.querySelector('.section__selection-character').classList.add('visible');
+                        document.querySelector('.section__selection-character').classList.remove('no-visible');
+                        SOUNDS_GAME.selectionCharacter.volume = 0.3;
+                        SOUNDS_GAME.selectionCharacter.play();
+                    }
+                })
             });
         });
     }
@@ -50,7 +56,39 @@ window.addEventListener('DOMContentLoaded', () => {
     if (characters) {
         characters.forEach((character) => {
             character.addEventListener('click', (event) => {
+                document.querySelector('.section__interface-banners-player').innerText = `PLAYER ${countNumberOfCharacters}`;
                 document.querySelector('.section__interface-banners-character').innerText = event.currentTarget.id.toUpperCase();
+                arrayCharactersSelectd.push(event.currentTarget.id.toUpperCase());
+                SOUNDS_GAME.selectedCharacter.play();
+                if (countNumberOfCharacters === numberOfCharacters) {
+                    setTimeout(() => {
+                        SOUNDS_GAME.selectionCharacter.pause();
+                        const game = new Game('canvas-street-ironter', arrayCharactersSelectd);
+                        game.start();
+                
+                        document.addEventListener('keydown', (event) => {
+                            game.player1.keyDownHandlerLeft(event);
+                            game.player2.keyDownHandlerRight(event);
+                        });
+                
+                        document.addEventListener('keyup', (event) => {
+                            game.player1.keyUpHandlerLeft(event);
+                            game.player2.keyUpHandlerRight(event);
+                        });
+
+                        document.querySelector('.section__selection-character').classList.add('no-visible');
+                        document.querySelector('.section__selection-character').classList.remove('visible');
+                        document.querySelector('.container').classList.add('visible');
+                        document.querySelector('.container').classList.remove('no-visible');
+                        arrayCharactersSelectd = [];
+                        numberOfCharacters = 1;
+                        countNumberOfCharacters = numberOfCharacters;
+                        document.querySelector('.section__interface-banners-player').innerText = '';
+                        document.querySelector('.section__interface-banners-character').innerText = '';
+                    }, 1500)
+                } else {
+                    countNumberOfCharacters++;
+                }
             })
         })
     }
