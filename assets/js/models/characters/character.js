@@ -38,10 +38,8 @@ class Character extends AnimatedSprite {
         this.specialEffect.forEach((effect) => {
             effect.draw();
         });
-    }
-
-    clear(){
-        this.context.clearRect(0, 0, this.context.canvas.width, this.context.canvas.height);
+        this.animate();
+        this.live.draw();
     }
 
     animate() {

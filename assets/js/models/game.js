@@ -1,6 +1,11 @@
 class Game {
-    constructor(idCanvas, selectedCharacters) {
+    constructor(idCanvas, selectedCharacters, selectedMode) {
         this.context = document.getElementById(idCanvas).getContext('2d');
+
+        this.selectedCharacters = selectedCharacters;
+        this.selectedMode = selectedMode;
+
+        this.onGameOver = () => {}
 
         selectedCharacters.forEach((character, index) => {
             switch(character){
@@ -42,7 +47,7 @@ class Game {
             new Honda(this.context, (this.context.canvas.width / 2) + START_RIGHT_SIDE, this.context.canvas.height - HEIGHT_BATTLEFIELD_CHARACTER)
         ];
 
-        if (selectedCharacters.length === 1) {
+        if (selectedCharacters.length === 1 && !selectedMode.toLowerCase().includes('practice')) {
             this.player2 = playerUnknown[Math.floor(Math.random() * playerUnknown.length)];
         }
 
@@ -74,7 +79,12 @@ class Game {
         SOUNDS_GAME.battlefield[this.randomSoundSelected].volume = 0.3;
         SOUNDS_GAME.battlefield[this.randomSoundSelected].play();
         this.intervalId = setInterval(() => {
+            this.clear();
             this.draw();
+            if (!this.selectedMode.toLowerCase().includes('practice')) {
+                this.evalCollitions();
+            }
+            this.checkFinale();
         }, 1000 / this.fps)
     }
 
@@ -84,73 +94,65 @@ class Game {
         this.intervalId = null;
     }
 
+    clear(){
+        this.context.clearRect(0, 0, this.context.canvas.width, this.context.canvas.height);
+    }
+
     draw() {
-        this.player1.clear();
         
-        this.imageBackgroundStatic.forEach((background) => {
-            background.draw();
-        });
-        this.imageBackgroundAnimated.forEach((background) => {
-            background.draw();
-        });
+        this.imageBackgroundStatic.forEach(background => background.draw());
+        this.imageBackgroundAnimated.forEach(background => background.draw());
+
+        this.timer.draw();
+
+        this.player1.positionOponent = !this.selectedMode.toLowerCase().includes('practice') ? this.player2.positionX : this.context.canvas.width / 2;
+        this.player1.draw();
+
+        if (!this.selectedMode.toLowerCase().includes('practice')) {
+            this.player2.positionOponent = this.player1.positionX;
+            this.player2.draw();
+            this.player2.coolDownHabilities();
+        }
+        
+        this.player1.coolDownHabilities();
         if (!this.timer.duration || this.player1.live.live <= 0 || this.player2.live.live <= 0) {
-            const interval = setInterval(() => {
+            !this.timer.duration ? this.messages.timeover.draw() : this.messages.ko.draw();
+        }
+    }
+
+    evalCollitions() {
+        this.player2.collision(this.player1);
+        this.player1.collision(this.player2);
+
+        if (this.player2.specialEffect.length) {
+            this.player2.specialEffect.forEach((special) => {
+                special.collision(this.player2, this.player1);
+            })
+        }
+        if (this.player1.specialEffect.length) {
+            this.player1.specialEffect.forEach((special) => {
+                special.collision(this.player1, this.player2);
+            })
+        }
+    }
+
+    checkFinale() {
+        if (!this.timer.duration || this.player1.live.live <= 0 || this.player2.live.live <= 0) {
+            const intervalId = setInterval(() => {
+                this.clear();
+                this.draw();
                 if (this.messages.ko.positionY > 200 || this.messages.timeover.positionY > 200) {
                     if(!this.timer.duration) {
                         SOUNDS_GAME.timeover.play();
                     } else if(this.player1.live.live <= 0 || this.player2.live.live <= 0) {
                         SOUNDS_GAME.ko.play();
                     }
-                    clearInterval(interval);
-                    setTimeout(() => {
-                        document.querySelector('.container').classList.add('no-visible');
-                        document.querySelector('.container').classList.remove('visible');
-                        document.querySelector('.section__intro').classList.add('visible');
-                        document.querySelector('.section__intro').classList.remove('no-visible');
-                        document.querySelector('.interface__actions-menu-players').classList.add('no-visible');
-                        document.querySelector('.interface__actions-menu-players').classList.remove('visible');
-                        SOUNDS_GAME.titleTheme.volume = 0.3;
-                        SOUNDS_GAME.titleTheme.play();
-                    }, 4000)
+                    clearInterval(intervalId);
+                    this.onGameOver();
                 }
-                this.player1.clear();
-                this.imageBackgroundStatic.forEach((background) => {
-                    background.draw();
-                });
-                this.imageBackgroundAnimated.forEach((background) => {
-                    background.draw();
-                });
-                !this.timer.duration ? this.messages.timeover.draw() : this.messages.ko.draw();
-                this.timer.draw();
-                this.player1.draw();
-                this.player1.live.draw();
-                this.player2.draw();
-                this.player2.live.draw();
             }, 1000 / this.fps);
+
             this.stop();
-        }
-        this.timer.draw();
-        this.player1.positionOponent = this.player2.positionX;
-        this.player1.draw();
-        this.player1.animate();
-        this.player1.live.draw();
-        this.player2.positionOponent = this.player1.positionX;
-        this.player2.draw();
-        this.player2.animate();
-        this.player2.live.draw();
-        this.player1.coolDownHabilities();
-        this.player2.coolDownHabilities();
-        this.player1.collision(this.player2);
-        this.player2.collision(this.player1);
-        if (this.player1.specialEffect.length) {
-            this.player1.specialEffect.forEach((special) => {
-                special.collision(this.player1, this.player2);
-            })
-        }
-        if (this.player2.specialEffect.length) {
-            this.player2.specialEffect.forEach((special) => {
-                special.collision(this.player2, this.player1);
-            })
         }
     }
 }

@@ -11,6 +11,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
     let arrayCharactersSelectd = [];
 
+    let selectedMode = null;
+
     if (controls) {
         controls.forEach((control) => {
             control.addEventListener("click", () => {
@@ -25,6 +27,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 Object.keys(GAME_MODES).forEach((mode) => {
                     if (control.innerText.toUpperCase() === mode.toUpperCase() || control.innerText.toUpperCase() === `${GAME_MODES[mode]} PLAYER`) {
                         numberOfCharacters = GAME_MODES[mode];
+                        selectedMode = mode;
                         SOUNDS_GAME.selectedCharacter.play();
                         SOUNDS_GAME.titleTheme.pause();
                         document.querySelector('.section__intro').classList.add('no-visible');
@@ -63,17 +66,23 @@ window.addEventListener('DOMContentLoaded', () => {
                 if (countNumberOfCharacters === numberOfCharacters) {
                     setTimeout(() => {
                         SOUNDS_GAME.selectionCharacter.pause();
-                        const game = new Game('canvas-street-ironter', arrayCharactersSelectd);
+                        const game = new Game('canvas-street-ironter', arrayCharactersSelectd, selectedMode);
                         game.start();
+
+                        game.onGameOver = onGameOver;
                 
                         document.addEventListener('keydown', (event) => {
                             game.player1.keyDownHandlerLeft(event);
-                            game.player2.keyDownHandlerRight(event);
+                            if (!game.selectedMode.toLowerCase().includes('practice')) {
+                                game.player2.keyDownHandlerRight(event);
+                            }
                         });
                 
                         document.addEventListener('keyup', (event) => {
                             game.player1.keyUpHandlerLeft(event);
-                            game.player2.keyUpHandlerRight(event);
+                            if (!game.selectedMode.toLowerCase().includes('practice')) {
+                                game.player2.keyUpHandlerRight(event);
+                            }
                         });
 
                         document.querySelector('.section__selection-character').classList.add('no-visible');
@@ -83,6 +92,7 @@ window.addEventListener('DOMContentLoaded', () => {
                         arrayCharactersSelectd = [];
                         numberOfCharacters = 1;
                         countNumberOfCharacters = numberOfCharacters;
+                        selectedMode = null;
                         document.querySelector('.section__interface-banners-player').innerText = '';
                         document.querySelector('.section__interface-banners-character').innerText = '';
                     }, 1500)
@@ -94,3 +104,17 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
 });
+
+
+function onGameOver() {
+    setTimeout(() => {
+        document.querySelector('.container').classList.add('no-visible');
+        document.querySelector('.container').classList.remove('visible');
+        document.querySelector('.section__intro').classList.add('visible');
+        document.querySelector('.section__intro').classList.remove('no-visible');
+        document.querySelector('.interface__actions-menu-players').classList.add('no-visible');
+        document.querySelector('.interface__actions-menu-players').classList.remove('visible');
+        SOUNDS_GAME.titleTheme.volume = 0.3;
+        SOUNDS_GAME.titleTheme.play();
+    }, 4000)
+}
