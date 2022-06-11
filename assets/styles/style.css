@@ -132,7 +132,7 @@ body {
     cursor: pointer;
 }
 
-.no-visible {
+.no-visible, .nonvisible {
     visibility: hidden;
 }
 
