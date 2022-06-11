@@ -9,30 +9,6 @@
         <title>Street Ironter</title>
     </head>
     <body>
-        <img class ="no-visible" src="./assets/images/characters/ken.png">
-        <img class ="no-visible" src="./assets/images/characters/ken.mirror.png">
-        <img class ="no-visible" src="./assets/images/characters/ryu.png">
-        <img class ="no-visible" src="./assets/images/characters/ryu.mirror.png">
-        <img class ="no-visible" src="./assets/images/characters/chunli.png">
-        <img class ="no-visible" src="./assets/images/characters/chunli.mirror.png">
-        <img class ="no-visible" src="./assets/images/characters/honda.png">
-        <img class ="no-visible" src="./assets/images/characters/honda.mirror.png">
-        <img class ="no-visible" src="./assets/images/stage/stage-ironter.png">
-        <audio muted>
-            <source src="./assets/sounds/punch_sound.wav" type="audio/ogg">
-            <source src="./assets/sounds/kick_sound.wav" type="audio/ogg">
-            <source src="./assets/sounds/superkick_sound.mp3" type="audio/mpeg">
-            <source src="./assets/sounds/character_select.mp3" type="audio/mpeg">
-            <source src="./assets/sounds/selected.wav" type="audio/ogg">
-            <source src="./assets/sounds/main.mp3" type="audio/mpeg">
-            <source src="./assets/sounds/fight.wav" type="audio/ogg">
-            <source src="./assets/sounds/ko.wav" type="audio/ogg">
-            <source src="./assets/sounds/timeover.wav" type="audio/ogg">
-            <source src="./assets/sounds/chunli/chunli_theme.mp3" type="audio/mpeg">
-            <source src="./assets/sounds/ken/ken_theme.mp3" type="audio/mpeg">
-            <source src="./assets/sounds/ryu/ryu_theme.mp3" type="audio/mpeg">
-            <source src="./assets/sounds/honda/honda_theme.mp3" type="audio/mpeg">
-        </audio>
         <div class="section section__intro visible">
             <div class="section__interface section__interface-main">
                 <div class="section__tools">
@@ -47,6 +23,7 @@
                         <div class="interface__actions-menu visible">
                             <a class="interface__actions-button interface__actions-button-start">START</a>
                             <a class="interface__actions-button interface__actions-button-controls">CONTROLS</a>
+                            <a class="interface__actions-button interface__actions-button-match-result">MATCH RESULTS</a>
                         </div>
                         <div class="interface__actions-menu interface__actions-menu-players no-visible">
                             <a class="interface__actions-button interface__actions-button-one-player">1 PLAYER</a> -->
@@ -78,9 +55,25 @@
         </div>
 
         <div class="modal" id="boardModal">
-            <div class="boardModal">
+            <div class="boardModal boardModal__width-50">
                 <div class="boardModal__section">
                     <img alt="" class="boardModal__image" src="./assets/images/interface/teclado.png"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="boardResultModal">
+            <div class="boardModal boardModal__width-20">
+                <div class="boardModal__section">
+                    <table id="table-results">
+                        <tbody class="table-results__header">
+                            <tr>
+                                <th>PLAYER 1</th>
+                                <th>PLAYER 2</th>
+                                <th>RESULT</th>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

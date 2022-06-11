@@ -6,35 +6,46 @@ class Game {
         this.selectedMode = selectedMode;
 
         this.onGameOver = () => {}
+        this.finalResult = {};
+        this.arrayFinalResult = window.localStorage.getItem('result') ? JSON.parse(window.localStorage.getItem('result')) : [];
+
 
         selectedCharacters.forEach((character, index) => {
             switch(character){
                 case 'KEN':
                     if(!index){
                         this.player1 = new Ken(this.context, (this.context.canvas.width / 2) + START_LEFT_SIDE, this.context.canvas.height - HEIGHT_BATTLEFIELD_CHARACTER);
+                        this.finalResult.player1 = character;
                     } else {
                         this.player2 = new Ken(this.context, (this.context.canvas.width / 2) + START_RIGHT_SIDE, this.context.canvas.height - HEIGHT_BATTLEFIELD_CHARACTER);
+                        this.finalResult.player2 = character;
                     }
                     break;
                 case 'CHUNLI':
                     if(!index){
                         this.player1 = new Chunli(this.context, (this.context.canvas.width / 2) + START_LEFT_SIDE, this.context.canvas.height - HEIGHT_BATTLEFIELD_CHARACTER);
+                        this.finalResult.player1 = character;
                     } else {
                         this.player2 = new Chunli(this.context, (this.context.canvas.width / 2) + START_RIGHT_SIDE, this.context.canvas.height - HEIGHT_BATTLEFIELD_CHARACTER);
+                        this.finalResult.player2 = character;
                     }
                     break;
                 case 'RYU':
                     if(!index){
                         this.player1 = new Ryu(this.context, (this.context.canvas.width / 2) + START_LEFT_SIDE, this.context.canvas.height - HEIGHT_BATTLEFIELD_CHARACTER);
+                        this.finalResult.player1 = character;
                     } else {
                         this.player2 = new Ryu(this.context, (this.context.canvas.width / 2) + START_RIGHT_SIDE, this.context.canvas.height - HEIGHT_BATTLEFIELD_CHARACTER);
+                        this.finalResult.player2 = character;
                     }
                     break;
                 case 'HONDA':
                     if(!index){
                         this.player1 = new Honda(this.context, (this.context.canvas.width / 2) + START_LEFT_SIDE, this.context.canvas.height - HEIGHT_BATTLEFIELD_CHARACTER);
+                        this.finalResult.player1 = character;
                     } else {
                         this.player2 = new Honda(this.context, (this.context.canvas.width / 2) + START_RIGHT_SIDE, this.context.canvas.height - HEIGHT_BATTLEFIELD_CHARACTER);
+                        this.finalResult.player2 = character;
                     }
                     break;
             }
@@ -147,6 +158,16 @@ class Game {
                     } else if(this.player1.live.live <= 0 || this.player2.live.live <= 0) {
                         SOUNDS_GAME.ko.play();
                     }
+
+                    if (!this.timer.duration) {
+                        this.finalResult.result = 'TIME OVER. BOTH LOSE';
+                    } else {
+                        this.finalResult.result = this.player1.live.live <= 0 ? `${this.finalResult.player2} WINS!` : `${this.finalResult.player1} WINS!`;
+                    }
+
+                    this.arrayFinalResult.push(this.finalResult);
+                    window.localStorage.setItem('result', JSON.stringify(this.arrayFinalResult));
+
                     clearInterval(intervalId);
                     this.onGameOver();
                 }

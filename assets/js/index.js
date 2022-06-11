@@ -19,6 +19,28 @@ window.addEventListener('DOMContentLoaded', () => {
                 if (control.innerText === 'CONTROLS') {
                     document.getElementById('boardModal').classList.add(isVisible);
                 }
+                if (control.innerText === 'MATCH RESULTS') {
+                    document.getElementById('boardResultModal').classList.add(isVisible);
+                    for (let element of document.querySelectorAll('#table-results tr.table-result__row')) {
+                        element.remove();
+                    }
+                    for (let result of JSON.parse(window.localStorage.result)){
+                        const newResult = document.createElement('tr');
+                        newResult.classList.add('table-result__row');
+                        const player1 = document.createElement('td');
+                        player1.innerText = result.player1;
+                        const player2 = document.createElement('td');
+                        player2.innerText = result.player2;
+                        const resultMath = document.createElement('td');
+                        resultMath.innerText = result.result;
+
+                        newResult.append(player1);
+                        newResult.append(player2);
+                        newResult.append(resultMath);
+
+                        document.getElementById('table-results').appendChild(newResult);
+                    }
+                }
                 if (control.innerText === 'START') {
                     SOUNDS_GAME.selectedCharacter.play();
                     document.querySelector('.no-visible').classList.add('visible');
@@ -39,13 +61,6 @@ window.addEventListener('DOMContentLoaded', () => {
                     }
                 })
             });
-        });
-    }
-
-    const closeModal = document.getElementById("boardModalClose");
-    if(closeModal){
-        closeModal.addEventListener("click", () => {
-            this.parentElement.parentElement.parentElement.classList.remove(isVisible);          
         });
     }
 
