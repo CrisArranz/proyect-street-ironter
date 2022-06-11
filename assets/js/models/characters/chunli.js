@@ -11,5 +11,6 @@ class Chunli extends Character {
             isMirrorring,
             'animation'
         ); 
+        this.name = 'CHUNLI';
     }
 }

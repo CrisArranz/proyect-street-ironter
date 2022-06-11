@@ -11,5 +11,7 @@ class Ryu extends Character {
             isMirrorring,
             'animation'
         ); 
+
+        this.name = 'RYU';
     }
 }

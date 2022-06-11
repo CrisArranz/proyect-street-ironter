@@ -10,6 +10,8 @@ class Ken extends Character {
             frameImages['ken'],
             isMirrorring,
             'animation'
-        );        
+        ); 
+        
+        this.name = 'KEN';
     }
 }

@@ -15,37 +15,37 @@ class Game {
                 case 'KEN':
                     if(!index){
                         this.player1 = new Ken(this.context, (this.context.canvas.width / 2) + START_LEFT_SIDE, this.context.canvas.height - HEIGHT_BATTLEFIELD_CHARACTER);
-                        this.finalResult.player1 = character;
+                        this.finalResult.player1 = this.player1.name;
                     } else {
                         this.player2 = new Ken(this.context, (this.context.canvas.width / 2) + START_RIGHT_SIDE, this.context.canvas.height - HEIGHT_BATTLEFIELD_CHARACTER);
-                        this.finalResult.player2 = character;
+                        this.finalResult.player2 = this.player2.name;
                     }
                     break;
                 case 'CHUNLI':
                     if(!index){
                         this.player1 = new Chunli(this.context, (this.context.canvas.width / 2) + START_LEFT_SIDE, this.context.canvas.height - HEIGHT_BATTLEFIELD_CHARACTER);
-                        this.finalResult.player1 = character;
+                        this.finalResult.player1 = this.player1.name;
                     } else {
                         this.player2 = new Chunli(this.context, (this.context.canvas.width / 2) + START_RIGHT_SIDE, this.context.canvas.height - HEIGHT_BATTLEFIELD_CHARACTER);
-                        this.finalResult.player2 = character;
+                        this.finalResult.player2 = this.player2.name;
                     }
                     break;
                 case 'RYU':
                     if(!index){
                         this.player1 = new Ryu(this.context, (this.context.canvas.width / 2) + START_LEFT_SIDE, this.context.canvas.height - HEIGHT_BATTLEFIELD_CHARACTER);
-                        this.finalResult.player1 = character;
+                        this.finalResult.player1 = this.player1.name;
                     } else {
                         this.player2 = new Ryu(this.context, (this.context.canvas.width / 2) + START_RIGHT_SIDE, this.context.canvas.height - HEIGHT_BATTLEFIELD_CHARACTER);
-                        this.finalResult.player2 = character;
+                        this.finalResult.player2 = this.player2.name;
                     }
                     break;
                 case 'HONDA':
                     if(!index){
                         this.player1 = new Honda(this.context, (this.context.canvas.width / 2) + START_LEFT_SIDE, this.context.canvas.height - HEIGHT_BATTLEFIELD_CHARACTER);
-                        this.finalResult.player1 = character;
+                        this.finalResult.player1 = this.player1.name;
                     } else {
                         this.player2 = new Honda(this.context, (this.context.canvas.width / 2) + START_RIGHT_SIDE, this.context.canvas.height - HEIGHT_BATTLEFIELD_CHARACTER);
-                        this.finalResult.player2 = character;
+                        this.finalResult.player2 = this.player2.name;
                     }
                     break;
             }
@@ -60,6 +60,7 @@ class Game {
 
         if (selectedCharacters.length === 1 && !selectedMode.toLowerCase().includes('practice')) {
             this.player2 = playerUnknown[Math.floor(Math.random() * playerUnknown.length)];
+            this.finalResult.player2 = this.player2.name;
         }
 
         this.imageBackgroundAnimated = [];

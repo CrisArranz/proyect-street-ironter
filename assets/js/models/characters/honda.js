@@ -11,5 +11,7 @@ class Honda extends Character {
             isMirrorring,
             'animation'
         ); 
+
+        this.name = 'HONDA';
     }
 }
