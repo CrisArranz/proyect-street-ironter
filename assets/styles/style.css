@@ -10,6 +10,7 @@ body {
     margin: 0;
     background-color: grey;
     font-family: 'street-fighter';
+    overflow: hidden;
 }
 
 .container {
