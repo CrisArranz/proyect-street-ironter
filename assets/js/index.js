@@ -3,7 +3,7 @@ window.addEventListener('DOMContentLoaded', () => {
     let numberOfCharacters = 1;
     let countNumberOfCharacters = numberOfCharacters;
 
-    SOUNDS_GAME.titleTheme.volume = 0.3;
+    SOUNDS_GAME.titleTheme.volume = 0.1;
     SOUNDS_GAME.titleTheme.play();
 
     const controls = document.querySelectorAll('.interface__actions-button');
@@ -26,7 +26,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 }
                 Object.keys(GAME_MODES).forEach((mode) => {
                     if (control.innerText.toUpperCase() === mode.toUpperCase() || control.innerText.toUpperCase() === `${GAME_MODES[mode]} PLAYER`) {
-                        numberOfCharacters = GAME_MODES[mode];
+                        numberOfCharacters = !GAME_MODES[mode] ? GAME_MODES[mode] + 1: GAME_MODES[mode];
                         selectedMode = mode;
                         SOUNDS_GAME.selectedCharacter.play();
                         SOUNDS_GAME.titleTheme.pause();
@@ -34,7 +34,7 @@ window.addEventListener('DOMContentLoaded', () => {
                         document.querySelector('.section__intro').classList.remove('visible');
                         document.querySelector('.section__selection-character').classList.add('visible');
                         document.querySelector('.section__selection-character').classList.remove('no-visible');
-                        SOUNDS_GAME.selectionCharacter.volume = 0.3;
+                        SOUNDS_GAME.selectionCharacter.volume = 0.1;
                         SOUNDS_GAME.selectionCharacter.play();
                     }
                 })
@@ -73,14 +73,14 @@ window.addEventListener('DOMContentLoaded', () => {
                 
                         document.addEventListener('keydown', (event) => {
                             game.player1.keyDownHandlerLeft(event);
-                            if (!game.selectedMode.toLowerCase().includes('practice')) {
+                            if (game.selectedMode.toLowerCase().includes('two_player')) {
                                 game.player2.keyDownHandlerRight(event);
                             }
                         });
                 
                         document.addEventListener('keyup', (event) => {
                             game.player1.keyUpHandlerLeft(event);
-                            if (!game.selectedMode.toLowerCase().includes('practice')) {
+                            if (game.selectedMode.toLowerCase().includes('two_player')) {
                                 game.player2.keyUpHandlerRight(event);
                             }
                         });
@@ -114,7 +114,7 @@ function onGameOver() {
         document.querySelector('.section__intro').classList.remove('no-visible');
         document.querySelector('.interface__actions-menu-players').classList.add('no-visible');
         document.querySelector('.interface__actions-menu-players').classList.remove('visible');
-        SOUNDS_GAME.titleTheme.volume = 0.3;
+        SOUNDS_GAME.titleTheme.volume = 0.1;
         SOUNDS_GAME.titleTheme.play();
     }, 4000)
 }

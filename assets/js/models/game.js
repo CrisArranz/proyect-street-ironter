@@ -76,7 +76,7 @@ class Game {
     }
 
     start() {
-        SOUNDS_GAME.battlefield[this.randomSoundSelected].volume = 0.3;
+        SOUNDS_GAME.battlefield[this.randomSoundSelected].volume = 0.1;
         SOUNDS_GAME.battlefield[this.randomSoundSelected].play();
         this.intervalId = setInterval(() => {
             this.clear();

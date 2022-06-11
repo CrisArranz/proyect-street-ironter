@@ -95,5 +95,5 @@ const SOUNDS_GAME = {
 const GAME_MODES = {
     one_player: 1,
     two_player: 2,
-    practice: 1
+    practice: 0
 }
