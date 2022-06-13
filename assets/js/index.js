@@ -21,25 +21,37 @@ window.addEventListener('DOMContentLoaded', () => {
                 }
                 if (control.innerText === 'MATCH RESULTS') {
                     document.getElementById('boardResultModal').classList.add(isVisible);
-                    for (let element of document.querySelectorAll('#table-results tr.table-result__row')) {
+                    
+                    for (let element of document.querySelectorAll('#boardModal__section-table-results tr.boardModal__section-table-result__row')) {
                         element.remove();
                     }
-                    for (let result of JSON.parse(window.localStorage.result)){
+                    if (window.localStorage.result) {
+                        for (let result of JSON.parse(window.localStorage.result)){
+                            const newResult = document.createElement('tr');
+                            newResult.classList.add('boardModal__section-table-result__row');
+                            const player1 = document.createElement('td');
+                            player1.innerText = result.player1;
+                            const player2 = document.createElement('td');
+                            player2.innerText = result.player2;
+                            const resultMath = document.createElement('td');
+                            resultMath.innerText = result.result;
+    
+                            newResult.append(player1);
+                            newResult.append(player2);
+                            newResult.append(resultMath);
+    
+                            document.getElementById('boardModal__section-table-results').appendChild(newResult);
+                        }
+                    } else {
                         const newResult = document.createElement('tr');
-                        newResult.classList.add('table-result__row');
-                        const player1 = document.createElement('td');
-                        player1.innerText = result.player1;
-                        const player2 = document.createElement('td');
-                        player2.innerText = result.player2;
-                        const resultMath = document.createElement('td');
-                        resultMath.innerText = result.result;
-
-                        newResult.append(player1);
-                        newResult.append(player2);
-                        newResult.append(resultMath);
-
-                        document.getElementById('table-results').appendChild(newResult);
+                        newResult.classList.add('boardModal__section-table-result__row');
+                        const noResult = document.createElement('td');
+                        noResult.setAttribute("colspan","3");
+                        noResult.innerText = 'NO MATCH DETECTED!';
+                        newResult.append(noResult);
+                        document.getElementById('boardModal__section-table-results').appendChild(newResult);
                     }
+                    
                 }
                 if (control.innerText === 'START') {
                     SOUNDS_GAME.selectedCharacter.play();
