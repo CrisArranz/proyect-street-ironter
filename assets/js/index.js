@@ -17,9 +17,11 @@ window.addEventListener('DOMContentLoaded', () => {
         controls.forEach((control) => {
             control.addEventListener("click", () => {
                 if (control.innerText === 'CONTROLS') {
+                    SOUNDS_GAME.selectedCharacter.play();
                     document.getElementById('boardModal').classList.add(isVisible);
                 }
                 if (control.innerText === 'MATCH RESULTS') {
+                    SOUNDS_GAME.selectedCharacter.play();
                     document.getElementById('boardResultModal').classList.add(isVisible);
                     
                     for (let element of document.querySelectorAll('#boardModal__section-table-results tr.boardModal__section-table-result__row')) {
